@@ -1,5 +1,6 @@
 const mantineThemeProvider = {
   defaultRadius: 6,
+  fontFamily: "Poppins, sans-serif",
   components: {
     Button: {
       variants: {
@@ -17,10 +18,26 @@ const mantineThemeProvider = {
             // ...theme.fn.hover({ backgroundColor: theme.colors.green[9] }),
           },
         }),
+        primary: (theme: any) => ({
+          root: {
+            color: "white",
+            backgroundColor: "#fc5d1b",
+            ...theme.fn.hover({ backgroundColor: "#dc4202" }),
+          },
+        }),
+        github: (theme: any) => ({
+          root: {
+            color: "#ffffff",
+            backgroundColor: "#15141a",
+            border: "0.15rem solid #c5c5c6",
+            fontWeight: 500,
+            ...theme.fn.hover({ backgroundColor: "#25252e" }),
+          },
+        }),
       },
     },
   },
-  color: {
+  colors: {
     "brand-primary": [
       "#c5211c",
       "#b11e19",
@@ -43,17 +60,6 @@ const mantineThemeProvider = {
       "#4a3824",
       "#312518",
     ],
-    "background-secondary": [
-      "#fff6f7",
-      "#e6ddde",
-      "#ccc5c6",
-      "#b3acad",
-      "#999494",
-      "#807b7c",
-      "#666263",
-      "#4c4a4a",
-      "#333131",
-    ],
     "text-primary": [
       "#f9f9f9",
       "#e0e0e0",
@@ -64,6 +70,19 @@ const mantineThemeProvider = {
       "#646464",
       "#4b4b4b",
       "#323232",
+    ],
+  },
+  background: {
+    "background-secondary": [
+      "#fff6f7",
+      "#e6ddde",
+      "#ccc5c6",
+      "#b3acad",
+      "#999494",
+      "#807b7c",
+      "#666263",
+      "#4c4a4a",
+      "#333131",
     ],
   },
 };
