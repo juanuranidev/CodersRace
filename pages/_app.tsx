@@ -5,7 +5,11 @@ import "styles/css/global.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <MantineProvider theme={mantineThemeProvider}>
+    <MantineProvider
+      withNormalizeCSS
+      withGlobalStyles
+      theme={mantineThemeProvider}
+    >
       <Component {...pageProps} />
     </MantineProvider>
   );
