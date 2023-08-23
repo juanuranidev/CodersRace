@@ -41,7 +41,123 @@ export default function Landing() {
       </Head>
       <Navbar />
       <Container bg="#15141a" size="full">
-        <Container size="xl" h="100vh" px="xl">
+        <Box
+          w="100%"
+          style={{ maxHeight: "calc(100vh - 4rem)", overflow: "hidden" }}
+        >
+          <Flex justify="flex-start">
+            <Text color="white" opacity="0.08">
+              {`const multiplyByTwo = function(num){return num * 2;}`}
+            </Text>
+          </Flex>
+          <Flex justify="center">
+            <Text color="white" opacity="0.08">
+              {`const printName = (first, last) => console.log("first, last");`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-end">
+            <Text color="white" opacity="0.08">
+              {`let func = function(arg1, arg2, ..., argN) {return expression;};`}
+            </Text>
+          </Flex>
+          <Flex justify="center">
+            <Text color="white" opacity="0.08">
+              {`const rgbToHex = (r, g, b) => "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-end">
+            <Text color="white" opacity="0.08">
+              {`const filteredArray = [1,2,3,4].filter( num => num % 2 == 0);`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-end">
+            <Text color="white" opacity="0.08">
+              {`const isAppleDevice = /Mac|iPod|iPhone|iPad/.test(navigator.platform);`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-start">
+            <Text color="white" opacity="0.08">
+              {`const timeFromDate = date => date.toTimeString().slice(0, 8);`}
+            </Text>
+          </Flex>
+          <Flex justify="center">
+            <Text color="white" opacity="0.08">
+              {`const stripHtml = html => (new DOMParser().parseFromString(html, 'text/html')).body.textContent || '';`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-end">
+            <Text color="white" opacity="0.08">
+              {`const stringReverse = str => str.split("").reverse().join("");`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-start">
+            <Text color="white" opacity="0.08">
+              {`const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-start">
+            <Text color="white" opacity="0.08">
+              {`const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-end">
+            <Text color="white" opacity="0.08">
+              {`const average = arr => arr.reduce((a, b) => a + b) / arr.length;`}
+            </Text>
+          </Flex>
+          <Flex justify="center">
+            <Text color="white" opacity="0.08">
+              {`const dayOfYear = (date) => Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-end">
+            <Text color="white" opacity="0.08">
+              {`const randomBoolean = () => Math.random() >= 0.5;`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-start">
+            <Text color="white" opacity="0.08">
+              {`const removeDuplicates = (arr) => [...new Set(arr)];`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-end">
+            <Text color="white" opacity="0.08">
+              {`const isDateValid = (...val) => !Number.isNaN(new Date(...val).valueOf());`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-start">
+            <Text color="white" opacity="0.08">
+              {`const randomArrayItem = (arr) => arr[Math.floor(Math.random() * arr.length)];`}
+            </Text>
+          </Flex>
+          <Flex justify="center">
+            <Text color="white" opacity="0.08">
+              {`console.log(materials.map((material) => material.length));`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-end">
+            <Text color="white" opacity="0.08">
+              {`let myFunction = (a, b) => a * b;`}
+            </Text>
+          </Flex>
+          <Flex justify="flex-start">
+            <Text color="white" opacity="0.08">
+              {`let x = function(x, y) {return x * y;}`}
+            </Text>
+          </Flex>
+        </Box>
+        <Container
+          size="xl"
+          w="100%"
+          px="xl"
+          pos="fixed"
+          style={{
+            top: "50%",
+            left: "50%",
+            position: "fixed",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
           <Flex justify="space-between" align="center" h="100%">
             <Box w="50%">
               <Title size="h1" fz="4rem" color="#fc5d1b">
@@ -55,7 +171,7 @@ export default function Landing() {
               </Button>
             </Box>
             <Box w="50%">
-              <Card pl="xl" bg="#2a2930" radius="lg">
+              <Card pl="xl" bg="#2a2930" radius="lg" opacity="1">
                 <pre style={{ fontFamily: "Poppins, sans-serif" }}>
                   {renderCode(landingCodes[0], inputValue)}
                 </pre>
