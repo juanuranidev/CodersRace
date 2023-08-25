@@ -9,9 +9,9 @@ import {
   Button,
   Container,
 } from "@mantine/core";
-import { landingCodes, renderCode } from "lib";
-import { Navbar } from "components";
 import Head from "next/head";
+import { RenderCode } from "components";
+import { Background } from "./components";
 
 const landingCode = `import React from 'react';\nimport { Code } from '@mantine/core';\n\nfunction Demo() {\n    return <Code>React.createElement()</Code>;\n}`;
 
@@ -41,20 +41,8 @@ export default function Landing() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
       <Container bg="background-primary.0" size="full">
-        <Box
-          w="100%"
-          style={{ maxHeight: "calc(100vh - 4rem)", overflow: "hidden" }}
-        >
-          {landingCodes.map((code) => (
-            <Flex justify={code.justify}>
-              <Text color="white" opacity="0.06">
-                {code.text}
-              </Text>
-            </Flex>
-          ))}
-        </Box>
+        <Background />
         <Container
           size="xl"
           w="100%"
@@ -80,11 +68,7 @@ export default function Landing() {
               </Button>
             </Box>
             <Box w="50%">
-              <Card pl="xl" bg="background-secondary.0" radius="lg" opacity="1">
-                <pre style={{ fontFamily: "Poppins, sans-serif" }}>
-                  {renderCode(landingCode, inputValue)}
-                </pre>
-              </Card>
+              <RenderCode code={landingCode} input={inputValue} />
             </Box>
           </Flex>
         </Container>
