@@ -24,16 +24,16 @@ const useStyles = createStyles(() => ({
 
 type Props = {};
 
-export default function Navbar({}: Props) {
+export default function Header({}: Props) {
   const { classes } = useStyles();
 
   return (
-    <Container size="full" bg="#15141a" p="0" h="4rem">
+    <Container size="full" bg="#15141a" p="0">
       <Container size="xl" p="md">
         <Flex justify="space-between">
           <Group spacing={50}>
             <Link className={classes.link} href="/">
-              Practicar
+              Correr
             </Link>
             <Link className={classes.link} href="/">
               Campeonatos
