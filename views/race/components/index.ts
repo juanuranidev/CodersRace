@@ -1,1 +1,1 @@
-export { default as Language } from "./language/Language";
+export { default as LanguageCard } from "./languageCard/LanguageCard";

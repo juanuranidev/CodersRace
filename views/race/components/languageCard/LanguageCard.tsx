@@ -40,7 +40,7 @@ const textAnimations = {
   cardNoHovered: { opacity: 1 },
 };
 
-export default function Language({ language }: Props) {
+export default function LanguageCard({ language }: Props) {
   const { classes } = useStyles();
   const { hovered, ref } = useHover();
 
