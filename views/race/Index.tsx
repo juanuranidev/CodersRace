@@ -4,10 +4,15 @@ import JavaScript from "assets/icons/JavaScript.svg";
 import TypeScript from "assets/icons/TypeScript.svg";
 import { Container, Text, Flex } from "@mantine/core";
 import { LanguageCard } from "./components";
+import { useRouter } from "next/router";
 
 type Props = {};
 
 export default function Race({}: Props) {
+  const router = useRouter();
+  const { language } = router.query;
+
+  console.log(language);
   return (
     <React.Fragment>
       <Head>
@@ -18,7 +23,7 @@ export default function Race({}: Props) {
       </Head>
       <Container size="xl">
         <Text py="2.5rem" color="text-primary.0" fw={500} fz={20}>
-          Código de
+          Código de {language ?? ""}
         </Text>
       </Container>
     </React.Fragment>

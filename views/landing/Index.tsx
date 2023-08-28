@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Kbd,
-  Card,
-  Flex,
-  Text,
-  Title,
-  Button,
-  Container,
-} from "@mantine/core";
-import Head from "next/head";
+import { Box, Flex, Text, Title, Button, Container } from "@mantine/core";
+import { landingCodes } from "lib";
 import { RenderCode } from "components";
-import { Background } from "./components";
+import { Code } from "./components";
+import Head from "next/head";
 
 const landingCode = `import React from 'react';\nimport { Code } from '@mantine/core';\n\nfunction Demo() {\n    return <Code>React.createElement()</Code>;\n}`;
 
@@ -42,7 +34,11 @@ export default function Landing() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container bg="background-primary.0" size="full">
-        <Background />
+        <Box>
+          {landingCodes.map((code: any) => (
+            <Code code={code} />
+          ))}
+        </Box>
         <Container
           size="xl"
           w="100%"
@@ -68,7 +64,7 @@ export default function Landing() {
               </Button>
             </Box>
             <Box w="50%">
-              <RenderCode code={landingCode} input={inputValue} />
+              <RenderCode code={landingCode} input={inputValue} opacity="" />
             </Box>
           </Flex>
         </Container>
