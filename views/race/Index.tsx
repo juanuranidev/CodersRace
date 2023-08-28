@@ -3,7 +3,7 @@ import Head from "next/head";
 import JavaScript from "assets/icons/JavaScript.svg";
 import TypeScript from "assets/icons/TypeScript.svg";
 import { Container, Text, Flex } from "@mantine/core";
-import { Language } from "./components";
+import { LanguageCard } from "./components";
 
 type Props = {};
 
@@ -33,7 +33,7 @@ export default function Race({}: Props) {
         </Text>
         <Flex justify="space-between">
           {languages.map((language) => (
-            <Language language={language} />
+            <LanguageCard language={language} />
           ))}
         </Flex>
       </Container>
