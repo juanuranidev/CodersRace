@@ -33,6 +33,9 @@ export default function Header({}: Props) {
         <Flex justify="space-between">
           <Group spacing={50}>
             <Link className={classes.link} href="/">
+              Inicio
+            </Link>
+            <Link className={classes.link} href="/race">
               Correr
             </Link>
             <Link className={classes.link} href="/">

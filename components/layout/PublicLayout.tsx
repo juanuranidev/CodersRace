@@ -1,4 +1,4 @@
-import { AppShell } from "@mantine/core";
+import { AppShell, Container } from "@mantine/core";
 import { Header } from "components";
 
 export default function PublicLayout({ children }: any) {
@@ -9,7 +9,9 @@ export default function PublicLayout({ children }: any) {
       header={<Header />}
       style={{ height: "100vh", overflow: "hidden" }}
     >
-      {children}
+      <Container bg="background-primary.0" size="full" h="100%">
+        {children}
+      </Container>
     </AppShell>
   );
 }

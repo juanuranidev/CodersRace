@@ -1,12 +1,13 @@
 import React from "react";
-import { Card, Kbd } from "@mantine/core";
+import { Card, Kbd, Progress } from "@mantine/core";
 
 type Props = {
   code: string;
   input: string;
+  opacity: string;
 };
 
-export default function RenderCode({ code, input }: Props) {
+export default function RenderCode({ code, input, opacity }: Props) {
   const renderText = (code: string, input: string): any => {
     return code.split("").map((character: string, index: number) => {
       const isSpace = character === "\n";
@@ -35,18 +36,27 @@ export default function RenderCode({ code, input }: Props) {
             style={{
               opacity: "1",
               fontWeight: 500,
-              fontSize: "1.2rem",
+              fontSize: "0.8rem",
+              marginLeft: "0.5rem",
               backgroundColor: "#fc5d1b",
             }}
           >
-            <Kbd size="sm" p="0" color="red">
+            <Kbd size="sm" p="0">
               {"↵ \n"}
             </Kbd>
           </span>
         );
-      } else if (isSpace) {
+      } else if (isSpace && !hasCompleted) {
         return (
-          <span key={index}>
+          <span key={index} style={{ marginLeft: "0.5rem", opacity: "0.5" }}>
+            <Kbd size="sm" p="0">
+              {"↵ \n"}
+            </Kbd>
+          </span>
+        );
+      } else if (isSpace && hasCompleted) {
+        return (
+          <span key={index} style={{ marginLeft: "0.5rem" }}>
             <Kbd size="sm" p="0">
               {"↵ \n"}
             </Kbd>
@@ -84,7 +94,8 @@ export default function RenderCode({ code, input }: Props) {
   };
 
   return (
-    <Card pl="xl" bg="background-secondary.0" radius="lg" opacity="1">
+    <Card px="lg" bg="background-secondary.0" radius="lg" opacity={opacity}>
+      <Progress color="orange" value={50} />
       <pre style={{ fontFamily: "Poppins, sans-serif" }}>
         {renderText(code, input)}
       </pre>

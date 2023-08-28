@@ -68,7 +68,8 @@ const landingCodes: {
   },
   {
     justify: "flex-start",
-    text: `const randomArrayItem = (arr) => arr[Math.floor(Math.random() * arr.length)];`,
+
+    text: `let x = function(x, y) {return x * y;}`,
   },
   {
     justify: "center",
@@ -84,7 +85,7 @@ const landingCodes: {
   },
   {
     justify: "flex-start",
-    text: `let x = function(x, y) {return x * y;}`,
+    text: `let mul = (num1,num2) => num1 * num2`,
   },
   {
     justify: "flex-end",
@@ -96,8 +97,9 @@ const landingCodes: {
   },
   {
     justify: "center",
-    text: `let mul = (num1,num2) => num1 * num2`,
+    text: `const randomArrayItem = (arr) => arr[Math.floor(Math.random() * arr.length)];`,
   },
+
   {
     justify: "flex-end",
     text: `let myFunction1 = () => console.log("No argument function");`,
