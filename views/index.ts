@@ -1,3 +1,3 @@
-// export * from "./championship";
-export * from "./landing";
-// export * from "./practice";
+export { default as Landing } from "./landing/Index";
+export { default as Race } from "./race/Index";
+export { default as SelectLanguage } from "./selectLanguage/Index";
