@@ -8,17 +8,6 @@ import { LanguageCard } from "./components";
 type Props = {};
 
 export default function Race({}: Props) {
-  const languages = [
-    {
-      name: "JavaScript",
-      image: JavaScript.src,
-    },
-    {
-      name: "TypeScript",
-      image: TypeScript.src,
-    },
-  ];
-
   return (
     <React.Fragment>
       <Head>
@@ -29,13 +18,8 @@ export default function Race({}: Props) {
       </Head>
       <Container size="xl">
         <Text py="2.5rem" color="text-primary.0" fw={500} fz={20}>
-          Elige tu lenguage
+          Código de
         </Text>
-        <Flex justify="space-between">
-          {languages.map((language) => (
-            <LanguageCard language={language} />
-          ))}
-        </Flex>
       </Container>
     </React.Fragment>
   );
