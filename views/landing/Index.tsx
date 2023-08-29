@@ -36,7 +36,7 @@ export default function Landing() {
       <Container bg="background-primary.0" size="full">
         <Box>
           {landingCodes.map((code: any) => (
-            <Code code={code} />
+            <Code key={code.text} code={code} />
           ))}
         </Box>
         <Container
@@ -64,7 +64,7 @@ export default function Landing() {
               </Button>
             </Box>
             <Box w="50%">
-              <RenderCode code={landingCode} input={inputValue} opacity="" />
+              <RenderCode code={landingCode} input={inputValue} />
             </Box>
           </Flex>
         </Container>

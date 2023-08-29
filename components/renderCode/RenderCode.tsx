@@ -1,13 +1,12 @@
 import React from "react";
-import { Card, Kbd, Progress } from "@mantine/core";
+import { Card, Kbd } from "@mantine/core";
 
 type Props = {
   code: string;
   input: string;
-  opacity: string;
 };
 
-export default function RenderCode({ code, input, opacity }: Props) {
+export default function RenderCode({ code, input }: Props) {
   const renderText = (code: string, input: string): any => {
     return code.split("").map((character: string, index: number) => {
       const isSpace = character === "\n";
@@ -94,8 +93,7 @@ export default function RenderCode({ code, input, opacity }: Props) {
   };
 
   return (
-    <Card px="lg" bg="background-secondary.0" radius="lg" opacity={opacity}>
-      <Progress color="orange" value={50} />
+    <Card px="lg" bg="background-secondary.0" radius="lg">
       <pre style={{ fontFamily: "Poppins, sans-serif" }}>
         {renderText(code, input)}
       </pre>

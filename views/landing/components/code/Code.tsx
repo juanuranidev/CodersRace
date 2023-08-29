@@ -6,6 +6,7 @@ import { Box, createStyles, Text } from "@mantine/core";
 const useStyles = createStyles({
   text: {
     cursor: "default",
+    fontWeight: 600,
   },
 });
 
