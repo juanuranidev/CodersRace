@@ -1,121 +1,62 @@
-import React from "react";
-import { Card, Kbd, Progress } from "@mantine/core";
+import React, { useState } from "react";
+import { Card, Progress, Textarea, FocusTrap } from "@mantine/core";
+import { useClickOutside, useDisclosure } from "@mantine/hooks";
+import { renderCodeCharacter } from "lib";
 
 type Props = {
   code: string;
-  input: string;
-  ref: any;
-  handleStartRace?: any;
-  opacity: string;
   active: boolean;
+  handlers: any;
+  inputValue: string;
+  setInputValue: any;
 };
 
 export default function RaceCard({
   code,
-  ref,
-  input,
-  opacity,
-  handleStartRace,
   active,
+  handlers,
+  inputValue,
+  setInputValue,
 }: Props) {
-  const renderText = (code: string, input: string): any => {
-    return code.split("").map((character: string, index: number) => {
-      const isSpace = character === "\n";
-      const inputLength = input.length - 1;
-      const hasCompleted = input.length > index;
-      const expectedCharacter = inputLength === index - 1;
+  const ref = useClickOutside(() => handlers.close());
 
-      if (expectedCharacter && !isSpace) {
-        return (
-          <span
-            key={index}
-            style={{
-              opacity: "1",
-              fontWeight: 500,
-              fontSize: "1.2rem",
-              backgroundColor: "#fc5d1b",
-            }}
-          >
-            {character}
-          </span>
-        );
-      } else if (expectedCharacter && isSpace) {
-        return (
-          <span
-            key={index}
-            style={{
-              opacity: "1",
-              fontWeight: 500,
-              fontSize: "0.8rem",
-              marginLeft: "0.5rem",
-              backgroundColor: "#fc5d1b",
-            }}
-          >
-            <Kbd size="sm" p="0">
-              {"↵ \n"}
-            </Kbd>
-          </span>
-        );
-      } else if (isSpace && !hasCompleted) {
-        return (
-          <span key={index} style={{ marginLeft: "0.5rem", opacity: "0.5" }}>
-            <Kbd size="sm" p="0">
-              {"↵ \n"}
-            </Kbd>
-          </span>
-        );
-      } else if (isSpace && hasCompleted) {
-        return (
-          <span key={index} style={{ marginLeft: "0.5rem" }}>
-            <Kbd size="sm" p="0">
-              {"↵ \n"}
-            </Kbd>
-          </span>
-        );
-      } else if (hasCompleted) {
-        return (
-          <span
-            key={index}
-            style={{
-              opacity: "1",
-              color: "white",
-              fontWeight: 500,
-              fontSize: "1.2rem",
-            }}
-          >
-            {character}
-          </span>
-        );
-      }
-      return (
-        <span
-          key={index}
-          style={{
-            fontSize: "1.2rem",
-            fontWeight: 500,
-            opacity: "0.5",
-            color: "white",
-          }}
-        >
-          {character}
-        </span>
-      );
-    });
+  const handleChangeInput = (e: any) => {
+    const input = e.target.value;
+    const inputLength = inputValue.length;
+    if (code[inputLength] === input) {
+      setInputValue(inputValue + e.target.value);
+    }
   };
 
   return (
     <Card
-      ref={ref}
       px="lg"
-      bg="background-secondary.0"
+      ref={ref}
       radius="lg"
-      opacity={opacity}
-      onClick={handleStartRace}
+      bg="background-secondary.0"
+      onClick={() => handlers.open()}
+      style={{ border: active ? "2px solid #fc5d1b" : "2px solid #ff0000" }}
     >
-      <Progress color="orange" value={50} />
       <pre style={{ fontFamily: "Poppins, sans-serif" }}>
-        {renderText(code, input)}
+        {renderCodeCharacter(code, inputValue)}
       </pre>
+      <FocusTrap active={active}>
+        <Textarea
+          style={{
+            height: "100%",
+            background: "none",
+            position: "absolute",
+          }}
+          top="0"
+          left="0"
+          w="100%"
+          value=""
+          id="test"
+          minRows={12}
+          variant="unstyled"
+          onChange={(e) => handleChangeInput(e)}
+        />
+      </FocusTrap>
     </Card>
   );
 }
