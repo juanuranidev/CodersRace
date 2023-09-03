@@ -1,4 +1,4 @@
-import Landing from "views/landing";
+import { Landing } from "views";
 import { PublicLayout } from "components";
 
 export default function Index() {

@@ -1,12 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { Box, Flex, Text, Title, Button, Container } from "@mantine/core";
+import {
+  Box,
+  Flex,
+  Text,
+  Title,
+  Button,
+  Container,
+  createStyles,
+} from "@mantine/core";
 import { landingCodes } from "lib";
 import { RenderCode } from "components";
 import { Code } from "./components";
+import Link from "next/link";
 
-const landingCode = `import React from 'react';\nimport { Code } from '@mantine/core';\n\nfunction Demo() {\n    return <Code>React.createElement()</Code>;\n}`;
+const useStyles = createStyles({
+  floatingHeader: {
+    top: "50%",
+    left: "50%",
+    width: "100%",
+    position: "fixed",
+    transform: "translate(-50%, -50%)",
+  },
+});
 
 export default function Landing() {
+  const { classes } = useStyles();
+  const landingCode = `import React from 'react';\nimport { Code } from '@mantine/core';\n\nfunction Demo() {\n    return <Code>React.createElement()</Code>;\n},`;
+
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleCompleteInput = (code: string) => {
@@ -31,18 +51,7 @@ export default function Landing() {
           <Code key={code.text} code={code} />
         ))}
       </Box>
-      <Container
-        size="xl"
-        w="100%"
-        px="xl"
-        pos="fixed"
-        style={{
-          top: "50%",
-          left: "50%",
-          position: "fixed",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
+      <Container px="xl" size="xl" className={classes.floatingHeader}>
         <Flex justify="space-between" align="center" h="100%">
           <Box w="50%">
             <Title size="h1" fz="4rem" color="brand-primary.0">
@@ -51,9 +60,11 @@ export default function Landing() {
             <Text size="md" fz="1rem" color="text-primary.0" fw={500}>
               ¿Qué tan rápido puedes codear?
             </Text>
-            <Button variant="primary" mt="md">
-              Comenzar
-            </Button>
+            <Link href="/race">
+              <Button variant="primary" mt="md">
+                Comenzar
+              </Button>
+            </Link>
           </Box>
           <Box w="50%">
             <RenderCode code={landingCode} input={inputValue} />
@@ -63,68 +74,3 @@ export default function Landing() {
     </Container>
   );
 }
-
-{
-  /* <Flex justify="center" w="50%" >
-<Textarea
-  style={{
-    position: "absolute",
-    background: "none",
-    // fontSize: "100rem",
-  }}
-  value=""
-  onChange={(e) => handleChangeInput(e)}
-  w="20rem"
-  id="text"
-  variant="unstyled"
-/>
-
-<pre style={{ fontFamily: "Poppins, sans-serif" }}>
-  <span>{handleRenderCode(codeTest, inputValue)}</span>
-</pre>
-</Flex> */
-}
-// const useStyles = createStyles(() => ({
-//   tab: {
-//     fontWeight: 600,
-//     color: "#c5c5c6 !important",
-//     padding: "0.8rem",
-//     "&:hover": {
-//       borderTopLeftRadius: "1rem",
-//       borderTopRightRadius: "1rem",
-//       backgroundColor: "#2a2930",
-//     },
-//   },
-// }));
-// // const { classes } = useStyles();
-{
-  /* <Tabs
-      bg="#2a2930"
-      color="orange"
-      defaultValue="first"
-      style={{
-        borderTopLeftRadius: "1rem",
-        borderTopRightRadius: "1rem",
-      }}
-      value={"first"}
-    >
-      <Tabs.List grow>
-        <Tabs.Tab value="first" className={classes.tab}>
-          JavaScript
-        </Tabs.Tab>
-        <Tabs.Tab value="second" className={classes.tab}>
-          TypeScript
-        </Tabs.Tab>
-        <Tabs.Tab value="third" className={classes.tab}>
-          Phyton
-        </Tabs.Tab>
-      </Tabs.List>
-    </Tabs> */
-}
-// const handleChangeInput = (e: any) => {
-//   const input = e.target.value;
-//   const inputLength = inputValue.length;
-//   if (codeTest[inputLength] === input) {
-//     setInputValue(inputValue + e.target.value);
-//   }
-// };
