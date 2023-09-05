@@ -30,7 +30,7 @@ const renderCodeCharacter = (code: string, input: string): any => {
             opacity: "1",
             fontWeight: 500,
             fontSize: "0.8rem",
-            marginLeft: "0.5rem",
+
             backgroundColor: "#fc5d1b",
           }}
         >
@@ -41,7 +41,7 @@ const renderCodeCharacter = (code: string, input: string): any => {
       );
     } else if (isSpace && !hasCompleted) {
       return (
-        <span key={index} style={{ marginLeft: "0.5rem", opacity: "0.5" }}>
+        <span key={index} style={{ opacity: "0.5" }}>
           <Kbd size="sm" p="0">
             {"↵ \n"}
           </Kbd>
@@ -49,7 +49,7 @@ const renderCodeCharacter = (code: string, input: string): any => {
       );
     } else if (isSpace && hasCompleted) {
       return (
-        <span key={index} style={{ marginLeft: "0.5rem" }}>
+        <span key={index}>
           <Kbd size="sm" p="0">
             {"↵ \n"}
           </Kbd>
