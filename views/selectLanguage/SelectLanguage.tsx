@@ -4,22 +4,20 @@ import TypeScript from "assets/icons/TypeScript.svg";
 import { LanguageCard } from "./components";
 import { Container, Text, Flex } from "@mantine/core";
 
-type Props = {};
+const languages = [
+  {
+    name: "JavaScript",
+    image: JavaScript.src,
+    link: "/race/javascript",
+  },
+  {
+    name: "TypeScript",
+    image: TypeScript.src,
+    link: "/race/typescript",
+  },
+];
 
-export default function SelectLanguage(props: Props) {
-  const languages = [
-    {
-      name: "JavaScript",
-      image: JavaScript.src,
-      link: "/race/javascript",
-    },
-    {
-      name: "TypeScript",
-      image: TypeScript.src,
-      link: "/race/typescript",
-    },
-  ];
-
+export default function SelectLanguage() {
   return (
     <Container size="xl">
       <Text py="2.5rem" color="text-primary.0" fw={500} fz={20}>
