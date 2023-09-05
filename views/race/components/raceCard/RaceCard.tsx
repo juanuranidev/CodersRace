@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Card, Progress, Textarea, FocusTrap } from "@mantine/core";
-import { useClickOutside, useDisclosure } from "@mantine/hooks";
+import React from "react";
+import { useClickOutside } from "@mantine/hooks";
 import { renderCodeCharacter } from "lib";
+import { Card, Textarea, FocusTrap, createStyles } from "@mantine/core";
 
 type Props = {
   code: string;
@@ -11,6 +11,17 @@ type Props = {
   setInputValue: any;
 };
 
+const useStyles = createStyles({
+  textarea: {
+    top: "0%",
+    left: "0%",
+    width: "100%",
+    height: "100%",
+    background: "none",
+    position: "absolute",
+  },
+});
+
 export default function RaceCard({
   code,
   active,
@@ -18,11 +29,13 @@ export default function RaceCard({
   inputValue,
   setInputValue,
 }: Props) {
+  const { classes } = useStyles();
   const ref = useClickOutside(() => handlers.close());
 
   const handleChangeInput = (e: any) => {
     const input = e.target.value;
     const inputLength = inputValue.length;
+
     if (code[inputLength] === input) {
       setInputValue(inputValue + e.target.value);
     }
@@ -42,18 +55,11 @@ export default function RaceCard({
       </pre>
       <FocusTrap active={active}>
         <Textarea
-          style={{
-            height: "100%",
-            background: "none",
-            position: "absolute",
-          }}
-          top="0"
-          left="0"
-          w="100%"
           value=""
           id="test"
           minRows={12}
           variant="unstyled"
+          className={classes.textarea}
           onChange={(e) => handleChangeInput(e)}
         />
       </FocusTrap>

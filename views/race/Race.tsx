@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Container, Text, Flex, Box, Progress } from "@mantine/core";
-import { useDisclosure, useInterval } from "@mantine/hooks";
-import { successToast } from "lib/utils/notifications";
-import { useRouter } from "next/router";
+import {
+  successToast,
+  javaScriptCodes,
+  formatMillisecondsToSeconds,
+} from "lib";
 import { RaceCard } from "./components";
+import { useRouter } from "next/router";
+import { useDisclosure, useInterval } from "@mantine/hooks";
+import { Container, Text, Flex, Progress, Group } from "@mantine/core";
 
 type Props = {};
 
@@ -13,23 +17,22 @@ export default function Race({}: Props) {
   const [active, handlers] = useDisclosure(true);
 
   const [inputValue, setInputValue] = useState<string>("");
-  const [seconds, setSeconds] = useState(0);
-  const interval = useInterval(() => setSeconds((s: number) => s + 1), 1000);
-
-  const code = `import React from 'react';\nimport { Code } from '@mantine/core';\n\nfunction Demo() {\n    return <Code>React.createElement()</Code>;\n}`;
+  const [milliSeconds, setMilliSeconds] = useState(0);
+  const interval = useInterval(
+    () => setMilliSeconds((s: number) => s + 10),
+    10
+  );
 
   const handleManageTimer = () => {
-    if (active && inputValue.length) {
+    if (inputValue.length) {
       interval.start();
-    } else if (!active) {
-      interval.stop();
     }
   };
 
   const handleHasFinishedTheRace = () => {
     if (inputValue.length === code.length) {
       interval.stop();
-      successToast("¡Completada!");
+      successToast("¡Completado!");
     }
   };
 
@@ -38,36 +41,50 @@ export default function Race({}: Props) {
     handleHasFinishedTheRace();
   }, [active, inputValue]);
 
+  const code = javaScriptCodes[0];
+
   return (
     <Container size="xl">
       <Flex justify="space-between" align="center" pt="2.5rem" pb="1rem">
         <Text color="text-primary.0" fw={500} fz={20}>
-          Escribe el siguiente código de {language ?? ""}
+          Escribe el siguiente código
         </Text>
-        <Text fw={500} fz={20} color="text-primary.0">
-          {seconds ?? ""} segundos
-        </Text>
+        <Group align="center">
+          <Text
+            fw={500}
+            fz={20}
+            w="4rem"
+            display="flex"
+            color="text-primary.0"
+            style={{ justifyContent: "flex-end" }}
+          >
+            {milliSeconds ? formatMillisecondsToSeconds(milliSeconds) : "0"}
+          </Text>
+          <Text fw={500} fz={20} color="text-primary.0">
+            segundos
+          </Text>
+        </Group>
       </Flex>
-      <Flex direction="column" justify="center" align="center" gap="2rem">
+      <Flex>
         <Progress
           w="100%"
           color="orange"
           value={(inputValue.length * 100) / code.length}
         />
-        <Box>
-          <RaceCard
-            code={code}
-            active={active}
-            handlers={handlers}
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-          />
-          {!active ? (
-            <Text align="center" mt="xl" fw={500} color="text-primary.0">
-              ¡Haz click en el código para escribir!
-            </Text>
-          ) : null}
-        </Box>
+      </Flex>
+      <Flex direction="column" align="center" pt="2.5rem" pb="1rem">
+        <RaceCard
+          code={code}
+          active={active}
+          handlers={handlers}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+        />
+        {!active ? (
+          <Text align="center" mt="xl" fw={500} color="text-primary.0">
+            ¡Haz click en el código para escribir!
+          </Text>
+        ) : null}
       </Flex>
     </Container>
   );
