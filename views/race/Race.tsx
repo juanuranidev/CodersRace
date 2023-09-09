@@ -41,7 +41,7 @@ export default function Race({}: Props) {
     handleHasFinishedTheRace();
   }, [active, inputValue]);
 
-  const code = javaScriptCodes[0];
+  const code = javaScriptCodes[1];
 
   return (
     <Container size="xl">
