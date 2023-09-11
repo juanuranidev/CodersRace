@@ -4,15 +4,16 @@ import typeScriptCodes from "./typeScriptCodes";
 
 const getRandomCode = (language: string) => {
   let index;
-
   switch (language) {
     case LANGUAGES_NAMES.JAVASCRIPT:
-      index = Math.floor(Math.random() * (javaScriptCodes.length - 0 + 1)) + 0;
-      return javaScriptCodes[index];
+      return javaScriptCodes[
+        Math.floor(Math.random() * javaScriptCodes.length)
+      ];
 
     case LANGUAGES_NAMES.TYPESCRIPT:
-      index = Math.floor(Math.random() * (typeScriptCodes.length - 0 + 1)) + 0;
-      return javaScriptCodes[index];
+      return typeScriptCodes[
+        Math.floor(Math.random() * typeScriptCodes.length)
+      ];
   }
 };
 

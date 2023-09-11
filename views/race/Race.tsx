@@ -3,6 +3,8 @@ import {
   successToast,
   javaScriptCodes,
   formatMillisecondsToSeconds,
+  getRandomCode,
+  LANGUAGES_NAMES,
 } from "lib";
 import { RaceCard } from "./components";
 import { useRouter } from "next/router";
@@ -16,8 +18,10 @@ export default function Race({}: Props) {
   const { language } = router.query;
   const [active, handlers] = useDisclosure(true);
 
+  const [code, setCode] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState<string>("");
   const [milliSeconds, setMilliSeconds] = useState(0);
+
   const interval = useInterval(
     () => setMilliSeconds((s: number) => s + 10),
     10
@@ -30,7 +34,7 @@ export default function Race({}: Props) {
   };
 
   const handleHasFinishedTheRace = () => {
-    if (inputValue.length === code.length) {
+    if (inputValue.length === code?.length) {
       interval.stop();
       successToast("¡Completado!");
     }
@@ -41,7 +45,9 @@ export default function Race({}: Props) {
     handleHasFinishedTheRace();
   }, [active, inputValue]);
 
-  const code = javaScriptCodes[1];
+  useEffect(() => {
+    setCode(getRandomCode(LANGUAGES_NAMES.JAVASCRIPT)!);
+  }, []);
 
   return (
     <Container size="xl">
@@ -69,23 +75,25 @@ export default function Race({}: Props) {
         <Progress
           w="100%"
           color="orange"
-          value={(inputValue.length * 100) / code.length}
+          // value={(inputValue.length * 100) / code.length}
         />
       </Flex>
-      <Flex direction="column" align="center" pt="2.5rem" pb="1rem">
-        <RaceCard
-          code={code}
-          active={active}
-          handlers={handlers}
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-        />
-        {!active ? (
-          <Text align="center" mt="xl" fw={500} color="text-primary.0">
-            ¡Haz click en el código para escribir!
-          </Text>
-        ) : null}
-      </Flex>
+      {code?.length! > 0 ? (
+        <Flex direction="column" align="center" pt="2.5rem" pb="1rem">
+          <RaceCard
+            code={code!}
+            active={active}
+            handlers={handlers}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+          />
+          {!active ? (
+            <Text align="center" mt="xl" fw={500} color="text-primary.0">
+              ¡Haz click en el código para escribir!
+            </Text>
+          ) : null}
+        </Flex>
+      ) : null}
     </Container>
   );
 }
