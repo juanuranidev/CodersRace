@@ -3,7 +3,6 @@ import javaScriptCodes from "./javaScriptCodes";
 import typeScriptCodes from "./typeScriptCodes";
 
 const getRandomCode = (language: string) => {
-  let index;
   switch (language) {
     case LANGUAGES_NAMES.JAVASCRIPT:
       return javaScriptCodes[
@@ -11,9 +10,10 @@ const getRandomCode = (language: string) => {
       ];
 
     case LANGUAGES_NAMES.TYPESCRIPT:
-      return typeScriptCodes[
-        Math.floor(Math.random() * typeScriptCodes.length)
-      ];
+      // return typeScriptCodes[
+      //   Math.floor(Math.random() * typeScriptCodes.length)
+      // ];
+      return typeScriptCodes[0];
   }
 };
 
