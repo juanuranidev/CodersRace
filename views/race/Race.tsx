@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {
   successToast,
-  javaScriptCodes,
-  formatMillisecondsToSeconds,
   getRandomCode,
   LANGUAGES_NAMES,
+  formatMillisecondsToSeconds,
 } from "lib";
 import { RaceCard } from "./components";
 import { useRouter } from "next/router";
@@ -40,13 +39,21 @@ export default function Race({}: Props) {
     }
   };
 
+  const handleSetCode = () => {
+    if (language === LANGUAGES_NAMES.JAVASCRIPT.toLowerCase()) {
+      setCode(getRandomCode(LANGUAGES_NAMES.JAVASCRIPT)!);
+    } else if (language === LANGUAGES_NAMES.TYPESCRIPT.toLowerCase()) {
+      setCode(getRandomCode(LANGUAGES_NAMES.TYPESCRIPT)!);
+    }
+  };
+
   useEffect(() => {
     handleManageTimer();
     handleHasFinishedTheRace();
   }, [active, inputValue]);
 
   useEffect(() => {
-    setCode(getRandomCode(LANGUAGES_NAMES.JAVASCRIPT)!);
+    handleSetCode();
   }, []);
 
   return (
@@ -75,7 +82,7 @@ export default function Race({}: Props) {
         <Progress
           w="100%"
           color="orange"
-          // value={(inputValue.length * 100) / code.length}
+          value={(inputValue.length * 100) / code?.length!}
         />
       </Flex>
       {code?.length! > 0 ? (
