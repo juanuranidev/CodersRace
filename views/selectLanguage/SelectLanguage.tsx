@@ -1,8 +1,9 @@
 import React from "react";
 import JavaScript from "assets/icons/JavaScript.svg";
 import TypeScript from "assets/icons/TypeScript.svg";
+import Python from "assets/icons/Python.svg";
 import { LanguageCard } from "./components";
-import { Container, Text, Flex } from "@mantine/core";
+import { Container, Text, Flex, Box, SimpleGrid } from "@mantine/core";
 
 const languages = [
   {
@@ -15,6 +16,11 @@ const languages = [
     image: TypeScript.src,
     link: "/race/typescript",
   },
+  {
+    name: "Python",
+    image: Python.src,
+    link: "/race/python",
+  },
 ];
 
 export default function SelectLanguage() {
@@ -23,11 +29,16 @@ export default function SelectLanguage() {
       <Text py="2.5rem" color="text-primary.0" fw={500} fz={20}>
         Elige tu lenguage
       </Text>
-      <Flex justify="space-between" gap="xl">
+      <SimpleGrid
+        cols={1}
+        spacing="xl"
+        verticalSpacing="xl"
+        breakpoints={[{ minWidth: "md", cols: 2 }]}
+      >
         {languages.map((language) => (
           <LanguageCard language={language} />
         ))}
-      </Flex>
+      </SimpleGrid>
     </Container>
   );
 }

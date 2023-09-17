@@ -44,6 +44,8 @@ export default function Race({}: Props) {
       setCode(getRandomCode(LANGUAGES_NAMES.JAVASCRIPT)!);
     } else if (language === LANGUAGES_NAMES.TYPESCRIPT.toLowerCase()) {
       setCode(getRandomCode(LANGUAGES_NAMES.TYPESCRIPT)!);
+    } else if (language === LANGUAGES_NAMES.PYTHON.toLowerCase()) {
+      setCode(getRandomCode(LANGUAGES_NAMES.PYTHON)!);
     }
   };
 
