@@ -1,29 +1,12 @@
 const pythonCodes: string[] = [
-  `def add_numbers(a, b):
-      return a + b`,
-  `def subtract_numbers(a, b):
-      return a - b`,
-  `def multiply_numbers(a, b):
-      return a * b`,
-  `def divide_numbers(a, b):
-      if b == 0:
-          return "Error: Division by zero"
-      return a / b`,
-  `def calculate_average(numbers):
-      if len(numbers) == 0:
-          return 0
-      return sum(numbers) / len(numbers)`,
-  `def is_even(number):
-      return number % 2 == 0`,
-  `def is_prime(number):
-      if number <= 1:
-          return False
-      for i in range(2, int(number**0.5) + 1):
-          if number % i == 0:
-              return False
-      return True`,
-  `def reverse_string(string):
-      return string[::-1]`,
+  `def add_numbers(a, b):\n    return a + b`,
+  `def subtract_numbers(a, b):\n    return a - b`,
+  `def multiply_numbers(a, b):\n    return a * b`,
+  `def divide_numbers(a, b):\n    if b == 0:\n        return "Error: Division by zero"\n    return a / b`,
+  `def calculate_average(numbers):\n    if len(numbers) == 0:\n        return 0\n    return sum(numbers) / len(numbers)`,
+  `def is_even(number):\n    return number % 2 == 0`,
+  `def is_prime(number):\n    if number <= 1:\n        return False\n    for i in range(2, int(number**0.5) + 1):\n        if number % i == 0:\n            return False\n    return True`,
+  `def reverse_string(string):\n    return string[::-1]`,
   `def get_factorial(n):
       if n == 0:
           return 1
