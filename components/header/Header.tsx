@@ -38,10 +38,10 @@ export default function Header({}: Props) {
             <Link className={classes.link} href="/race">
               Correr
             </Link>
-            <Link className={classes.link} href="/">
+            <Link className={classes.link} href="/championship">
               Campeonatos
             </Link>
-            <Link className={classes.link} href="/">
+            <Link className={classes.link} href="/ranking">
               Ranking
             </Link>
           </Group>

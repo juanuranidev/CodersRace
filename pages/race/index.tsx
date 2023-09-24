@@ -4,7 +4,7 @@ import { SelectLanguage } from "views";
 
 type Props = {};
 
-export default function leaderboard({}: Props) {
+export default function index({}: Props) {
   return (
     <PublicLayout>
       <SelectLanguage />

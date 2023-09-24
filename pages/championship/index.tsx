@@ -1,13 +1,13 @@
-import React from "react";
 import { PublicLayout } from "components";
-import { Race } from "views";
+import React from "react";
+import { Championship } from "views";
 
 type Props = {};
 
 export default function index({}: Props) {
   return (
     <PublicLayout>
-      <Race />
+      <Championship />
     </PublicLayout>
   );
 }

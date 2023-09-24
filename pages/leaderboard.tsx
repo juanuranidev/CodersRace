@@ -2,6 +2,6 @@ import React from "react";
 
 type Props = {};
 
-export default function leaderboard({}: Props) {
+export default function index({}: Props) {
   return <div>leaderboard</div>;
 }
