@@ -3,7 +3,7 @@ import JavaScript from "assets/icons/JavaScript.svg";
 import TypeScript from "assets/icons/TypeScript.svg";
 import Python from "assets/icons/Python.svg";
 import { LanguageCard } from "./components";
-import { Container, Text, Flex, Box, SimpleGrid } from "@mantine/core";
+import { Container, Text, SimpleGrid } from "@mantine/core";
 
 const languages = [
   {
