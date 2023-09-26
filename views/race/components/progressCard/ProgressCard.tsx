@@ -8,13 +8,13 @@ type Props = {
   handlers: any;
   inputValue: string;
   setInputValue: any;
-  milliSeconds: number;
+  milliseconds: number;
 };
 
 export default function ProgressCard({
   code,
   inputValue,
-  milliSeconds,
+  milliseconds,
 }: Props) {
   return (
     <Card w="100%" h="100%" px="lg" radius="lg" bg="background-secondary.0">

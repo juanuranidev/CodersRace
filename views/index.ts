@@ -1,11 +1,11 @@
-export { default as Championship } from "./championship/Championship";
-export { default as Landing } from "./landing/Landing";
-export { default as Code } from "./landing/components/code/Code";
 export { default as Race } from "./race/Race";
 export { default as CPM } from "./race/components/cpm/CPM";
-export { default as ProgressCard } from "./race/components/progressCard/ProgressCard";
+export { default as Code } from "./landing/components/code/Code";
+export { default as Landing } from "./landing/Landing";
+export { default as Ranking } from "./ranking/Ranking";
 export { default as RaceCard } from "./race/components/raceCard/RaceCard";
 export { default as TimeCard } from "./race/components/timeCard/TimeCard";
-export { default as Ranking } from "./ranking/Ranking";
-export { default as SelectLanguage } from "./selectLanguage/SelectLanguage";
+export { default as ProgressCard } from "./race/components/progressCard/ProgressCard";
+export { default as Championship } from "./championship/Championship";
 export { default as LanguageCard } from "./selectLanguage/components/languageCard/LanguageCard";
+export { default as SelectLanguage } from "./selectLanguage/SelectLanguage";
