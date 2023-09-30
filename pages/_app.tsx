@@ -1,11 +1,16 @@
 import type { AppProps } from "next/app";
 import { mantineThemeProvider } from "styles";
 import { MantineProvider } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
+import { MobileModal } from "components";
 import { Toaster } from "react-hot-toast";
 import Head from "next/head";
 import "styles/css/global.css";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  console.log(isMobile);
+
   return (
     <MantineProvider
       withNormalizeCSS
@@ -19,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Toaster position="bottom-right" />
-      <Component {...pageProps} />
+      {isMobile ? <MobileModal /> : <Component {...pageProps} />}
     </MantineProvider>
   );
 }
