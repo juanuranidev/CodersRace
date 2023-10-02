@@ -1,11 +1,10 @@
-import type { AppProps } from "next/app";
 import { mantineThemeProvider } from "styles";
 import { MantineProvider } from "@mantine/core";
 import { Toaster } from "react-hot-toast";
 import Head from "next/head";
 import "styles/css/global.css";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }) {
   return (
     <MantineProvider
       withNormalizeCSS
