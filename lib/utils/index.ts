@@ -5,4 +5,5 @@ export { default as landingCodes } from "./landingCodes";
 export * from "./notifications";
 export { default as pythonCodes } from "./pythonCodes";
 export { default as renderCodeCharacter } from "./renderCodeCharacter";
+export { default as request } from "./request";
 export { default as typeScriptCodes } from "./typeScriptCodes";
