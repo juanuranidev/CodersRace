@@ -1,1 +1,1 @@
-export { default as LANGUAGES_NAMES } from "./languages";
+export { default as languages } from "./languages";
