@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import JavaScript from "assets/icons/JavaScript.svg";
 import TypeScript from "assets/icons/TypeScript.svg";
 import Python from "assets/icons/Python.svg";
 import { LanguageCard } from "./components";
 import { Container, Text, SimpleGrid } from "@mantine/core";
+import { getLanguagesService } from "services";
 
 const languages = [
   {
@@ -24,6 +25,21 @@ const languages = [
 ];
 
 export default function SelectLanguage() {
+  const [languages, setLanguages] = useState([]);
+
+  const handleGetLanguages = async () => {
+    try {
+      const response = await getLanguagesService();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handleGetLanguages();
+  }, []);
+
   return (
     <Container size="xl">
       <Text py="2.5rem" color="text-primary.0" fw={500} fz={20}>
