@@ -3,6 +3,7 @@ import { MantineProvider } from "@mantine/core";
 import { Toaster } from "react-hot-toast";
 import Head from "next/head";
 import "styles/css/global.css";
+import "styles/css/components.css";
 
 export default function App({ Component, pageProps }) {
   return (
