@@ -5,7 +5,7 @@ export const getLanguagesService = async () => {
   try {
     const response = await request({
       method: "GET",
-      url: "languages/",
+      url: "api/languages/",
     });
     return fromGetLanguagesApi(response.data);
   } catch (error: any) {
