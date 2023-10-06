@@ -1,44 +1,35 @@
 import React, { useEffect, useState } from "react";
-import JavaScript from "assets/icons/JavaScript.svg";
-import TypeScript from "assets/icons/TypeScript.svg";
-import Python from "assets/icons/Python.svg";
-import { LanguageCard } from "./components";
-import { Container, Text, SimpleGrid } from "@mantine/core";
+import { Container, Text, SimpleGrid, Flex } from "@mantine/core";
 import { getLanguagesService } from "services";
-
-const languages = [
-  {
-    name: "JavaScript",
-    image: JavaScript.src,
-    link: "/race/javascript",
-  },
-  {
-    name: "TypeScript",
-    image: TypeScript.src,
-    link: "/race/typescript",
-  },
-  {
-    name: "Python",
-    image: Python.src,
-    link: "/race/python",
-  },
-];
+import { LanguageCard } from "./components";
+import { Loader } from "components";
 
 export default function SelectLanguage() {
-  const [languages, setLanguages] = useState([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [languages, setLanguages] = useState<any[]>([]);
 
   const handleGetLanguages = async () => {
     try {
       const response = await getLanguagesService();
-      console.log(response);
+
+      setLanguages(response);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     handleGetLanguages();
   }, []);
+
+  if (isLoading)
+    return (
+      <Flex align="center" justify="center" mih="90%">
+        <Loader />
+      </Flex>
+    );
 
   return (
     <Container size="xl">
@@ -51,8 +42,8 @@ export default function SelectLanguage() {
         verticalSpacing="xl"
         breakpoints={[{ minWidth: "md", cols: 2 }]}
       >
-        {languages.map((language) => (
-          <LanguageCard language={language} />
+        {languages.map((language: any) => (
+          <LanguageCard language={language} key={language?.id} />
         ))}
       </SimpleGrid>
     </Container>

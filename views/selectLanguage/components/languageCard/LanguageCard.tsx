@@ -1,8 +1,12 @@
 import React from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useHover } from "@mantine/hooks";
+import { LANGUAGES_NAMES } from "lib";
 import { Card, Flex, Text, createStyles } from "@mantine/core";
+import JavaScript from "assets/icons/JavaScript.svg";
+import TypeScript from "assets/icons/TypeScript.svg";
+import Python from "assets/icons/Python.svg";
+import Link from "next/link";
 
 type Props = {
   language: any;
@@ -36,12 +40,26 @@ export default function LanguageCard({ language }: Props) {
     },
   };
 
+  const handleRenderIcon = (language: string): any => {
+    switch (language) {
+      case LANGUAGES_NAMES.JAVASCRIPT:
+        return JavaScript.src;
+      case LANGUAGES_NAMES.TYPESCRIPT:
+        return TypeScript.src;
+      case LANGUAGES_NAMES.PYTHON:
+        return Python.src;
+    }
+  };
+
   return (
     <motion.div
       variants={cardAnimations}
       animate={hovered ? "cardHovered" : ""}
     >
-      <Link href={language?.link} style={{ textDecoration: "none" }}>
+      <Link
+        href={`/race/${language?.name.toLowerCase()}`}
+        style={{ textDecoration: "none" }}
+      >
         <Card
           p="xl"
           w="100%"
@@ -55,7 +73,7 @@ export default function LanguageCard({ language }: Props) {
             <motion.img
               width={50}
               height={50}
-              src={language.image}
+              src={handleRenderIcon(language?.name)}
               alt="javascript logo"
               variants={imageAnimations}
               animate={hovered ? "cardHovered" : ""}
