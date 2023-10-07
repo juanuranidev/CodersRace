@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {
-  successToast,
-  getRandomCode,
-  LANGUAGES_NAMES,
-  useMillisecondCounter,
-} from "lib";
+import { successToast, LANGUAGES_NAMES, useMillisecondCounter } from "lib";
 import { useRouter } from "next/router";
 import { useDisclosure } from "@mantine/hooks";
 import { Container, Text, Flex, Grid, Box } from "@mantine/core";
 import { RaceCard, ProgressCard, TimeCard, CPM } from "./components";
+import { getRandomCodeByLanguageService } from "services/codes";
+import { Loader } from "components";
 
 type Props = {};
 
@@ -19,6 +16,7 @@ export default function Race({}: Props) {
   const { milliseconds, startCounter, stopCounter } = useMillisecondCounter();
 
   const [code, setCode] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleManageTimer = () => {
@@ -34,14 +32,16 @@ export default function Race({}: Props) {
     }
   };
 
-  const handleSetCode = () => {
-    if (language === LANGUAGES_NAMES.JAVASCRIPT.toLowerCase()) {
-      setCode(getRandomCode(LANGUAGES_NAMES.JAVASCRIPT)!);
-    } else if (language === LANGUAGES_NAMES.TYPESCRIPT.toLowerCase()) {
-      setCode(getRandomCode(LANGUAGES_NAMES.TYPESCRIPT)!);
-    } else if (language === LANGUAGES_NAMES.PYTHON.toLowerCase()) {
-      setCode(getRandomCode(LANGUAGES_NAMES.PYTHON)!);
+  const handleGetCode = async () => {
+    setIsLoading(true);
+    try {
+      const response = await getRandomCodeByLanguageService(language);
+      setCode(response.text);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function Race({}: Props) {
   }, [active, inputValue]);
 
   useEffect(() => {
-    handleSetCode();
+    handleGetCode();
   }, []);
 
   return (
@@ -60,7 +60,11 @@ export default function Race({}: Props) {
           Escribe el siguiente código
         </Text>
       </Flex>
-      {code?.length! > 0 ? (
+      {!code || isLoading ? (
+        <Flex justify="center" align="center" pt="10rem">
+          <Loader />
+        </Flex>
+      ) : (
         <React.Fragment>
           <Grid grow gutter="xl" mb="xs">
             <Grid.Col span={8}>
@@ -95,7 +99,7 @@ export default function Race({}: Props) {
             ) : null}
           </Box>
         </React.Fragment>
-      ) : null}
+      )}
     </Container>
   );
 }

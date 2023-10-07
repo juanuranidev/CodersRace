@@ -1,6 +1,8 @@
 import { request } from "lib";
 
-export const getCodeByLanguage = async (languageName: string) => {
+export const getRandomCodeByLanguageService = async (
+  languageName: string | undefined | string[]
+) => {
   try {
     const response = await request({
       method: "GET",
