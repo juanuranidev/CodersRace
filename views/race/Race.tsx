@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { successToast, LANGUAGES_NAMES, useMillisecondCounter } from "lib";
 import { useRouter } from "next/router";
 import { useDisclosure } from "@mantine/hooks";
@@ -13,6 +13,7 @@ export default function Race({}: Props) {
   const router = useRouter();
   const { language } = router.query;
   const [active, handlers] = useDisclosure(true);
+  const hasFetchedCode = useRef(false);
   const { milliseconds, startCounter, stopCounter } = useMillisecondCounter();
 
   const [code, setCode] = useState<string | null>(null);
@@ -50,7 +51,10 @@ export default function Race({}: Props) {
   }, [active, inputValue]);
 
   useEffect(() => {
-    handleGetCode();
+    if (!hasFetchedCode.current) {
+      handleGetCode();
+      hasFetchedCode.current = true;
+    }
   }, []);
 
   return (
