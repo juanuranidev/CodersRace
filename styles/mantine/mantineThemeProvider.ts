@@ -1,6 +1,7 @@
 const mantineThemeProvider = {
   defaultRadius: 6,
   fontFamily: "Poppins, sans-serif",
+  colorScheme: "dark",
   components: {
     Button: {
       variants: {

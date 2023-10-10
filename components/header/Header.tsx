@@ -1,15 +1,17 @@
 import React from "react";
 import {
-  Box,
-  Container,
-  Group,
+  Menu,
   Flex,
+  Group,
   Button,
+  Avatar,
+  Container,
   createStyles,
 } from "@mantine/core";
-import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react";
 import GitHubIcon from "assets";
 import Image from "next/image";
+import Link from "next/link";
 
 const useStyles = createStyles(() => ({
   link: {
@@ -25,6 +27,7 @@ const useStyles = createStyles(() => ({
 type Props = {};
 
 export default function Header({}: Props) {
+  const { data } = useSession();
   const { classes } = useStyles();
 
   return (
@@ -45,19 +48,35 @@ export default function Header({}: Props) {
               Ranking
             </Link>
           </Group>
-          <Button
-            leftIcon={
-              <Image
-                src={GitHubIcon}
-                alt="github icon"
-                width="25"
-                height="25"
-              />
-            }
-            variant="github"
-          >
-            Sign in
-          </Button>
+          {data?.user?.image ? (
+            <Menu>
+              <Menu.Target>
+                <Avatar
+                  radius="xl"
+                  src={data?.user?.image}
+                  style={{ cursor: "pointer" }}
+                />
+              </Menu.Target>
+              <Menu.Dropdown>
+                <Menu.Item onClick={() => signOut()}>Cerrar sesión</Menu.Item>
+              </Menu.Dropdown>
+            </Menu>
+          ) : (
+            <Button
+              leftIcon={
+                <Image
+                  src={GitHubIcon}
+                  alt="github icon"
+                  width="25"
+                  height="25"
+                />
+              }
+              variant="github"
+              onClick={() => signIn("github")}
+            >
+              Sign in
+            </Button>
+          )}
         </Flex>
       </Container>
     </Container>
