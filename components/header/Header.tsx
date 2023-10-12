@@ -7,11 +7,13 @@ import {
   Avatar,
   Container,
   createStyles,
+  Text,
 } from "@mantine/core";
 import { useSession, signIn, signOut } from "next-auth/react";
 import GitHubIcon from "assets";
 import Image from "next/image";
 import Link from "next/link";
+import { useUserData } from "hooks";
 
 const useStyles = createStyles(() => ({
   link: {
@@ -27,8 +29,10 @@ const useStyles = createStyles(() => ({
 type Props = {};
 
 export default function Header({}: Props) {
-  const { data } = useSession();
   const { classes } = useStyles();
+  const userData = useUserData();
+
+  console.log(userData);
 
   return (
     <Container size="full" bg="#15141a" p="0">
@@ -48,12 +52,13 @@ export default function Header({}: Props) {
               Ranking
             </Link>
           </Group>
-          {data?.user?.image ? (
+          {userData?.image ? (
             <Menu>
               <Menu.Target>
+                {/* <Text>{data?.user?.githubUsername}</Text> */}
                 <Avatar
                   radius="xl"
-                  src={data?.user?.image}
+                  src={userData?.image}
                   style={{ cursor: "pointer" }}
                 />
               </Menu.Target>
