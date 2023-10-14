@@ -1,11 +1,11 @@
-import { useSession } from "next-auth/react";
 import React, { useEffect, useState, createContext } from "react";
+import { useSession } from "next-auth/react";
 
 export const UserDataContext = createContext(null);
 
 export const UserDataProvider = ({ children }) => {
-  const [userData, setUserData] = useState(null);
   const { data } = useSession();
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     if (data) {
@@ -13,17 +13,13 @@ export const UserDataProvider = ({ children }) => {
     }
   }, [data]);
 
-  if (!data) return <p>Loading...</p>;
-
   return (
     <UserDataContext.Provider
       value={{
         userData,
       }}
     >
-      {/* {loadin... && <LOADING />}
-       */}
-      {data && children}
+      {children}
     </UserDataContext.Provider>
   );
 };

@@ -1,11 +1,12 @@
+import Head from "next/head";
 import { mantineThemeProvider } from "styles";
+import { UserDataProvider } from "../contexts/UserData";
 import { MantineProvider } from "@mantine/core";
 import { SessionProvider } from "next-auth/react";
+import { AuthHandler } from "components";
 import { Toaster } from "react-hot-toast";
-import Head from "next/head";
 import "styles/css/global.css";
 import "styles/css/components.css";
-import { UserDataProvider } from "../contexts/UserData";
 
 export default function App({
   Component,
@@ -29,7 +30,13 @@ export default function App({
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <Toaster position="bottom-right" />
-          <Component {...pageProps} />
+          {Component.auth ? (
+            <AuthHandler auth={Component.auth}>
+              <Component {...pageProps} />
+            </AuthHandler>
+          ) : (
+            <Component {...pageProps} />
+          )}
         </UserDataProvider>
       </SessionProvider>
     </MantineProvider>
