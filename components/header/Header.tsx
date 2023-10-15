@@ -32,8 +32,6 @@ export default function Header({}: Props) {
   const { classes } = useStyles();
   const userData = useUserData();
 
-  console.log(userData);
-
   return (
     <Container size="full" bg="#15141a" p="0">
       <Container size="xl" p="md">
@@ -42,11 +40,8 @@ export default function Header({}: Props) {
             <Link className={classes.link} href="/">
               Inicio
             </Link>
-            <Link className={classes.link} href="/race">
-              Correr
-            </Link>
-            <Link className={classes.link} href="/championship">
-              Campeonatos
+            <Link className={classes.link} href="/play">
+              Jugar
             </Link>
             <Link className={classes.link} href="/ranking">
               Ranking
@@ -55,12 +50,10 @@ export default function Header({}: Props) {
           {userData?.image ? (
             <Menu>
               <Menu.Target>
-                {/* <Text>{data?.user?.githubUsername}</Text> */}
-                <Avatar
-                  radius="xl"
-                  src={userData?.image}
-                  style={{ cursor: "pointer" }}
-                />
+                <Group style={{ cursor: "pointer" }}>
+                  <Text>{userData?.githubUsername}</Text>
+                  <Avatar radius="xl" src={userData?.image} />
+                </Group>
               </Menu.Target>
               <Menu.Dropdown>
                 <Menu.Item onClick={() => signOut()}>Cerrar sesión</Menu.Item>

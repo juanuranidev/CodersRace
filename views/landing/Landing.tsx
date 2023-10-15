@@ -60,7 +60,7 @@ export default function Landing() {
             <Text size="md" fz="1rem" color="text-primary.0" fw={500}>
               ¿Qué tan rápido puedes codear?
             </Text>
-            <Link href="/race">
+            <Link href="/play">
               <Button variant="primary" mt="md">
                 Comenzar
               </Button>
