@@ -11,7 +11,3 @@ export default function index({}: Props) {
     </PublicLayout>
   );
 }
-
-index.auth = {
-  unauthorized: "/",
-};

@@ -1,6 +1,6 @@
-import { PublicLayout } from "components";
 import React from "react";
-import { Championship, Play } from "views";
+import { Play } from "views";
+import { PublicLayout } from "components";
 
 type Props = {};
 

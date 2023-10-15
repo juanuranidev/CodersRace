@@ -8,12 +8,3 @@ export default function Index() {
     </PublicLayout>
   );
 }
-
-// Index.getLayout = function getLayout(page: any) {
-//   console.log(page);
-//   return <PublicLayout>{page}</PublicLayout>;
-// };
-
-// Index.getLayout = function getLayout(page: any) {
-//   return <PublicLayout>{page}</PublicLayout>;
-// };

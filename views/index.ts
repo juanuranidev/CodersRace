@@ -1,4 +1,3 @@
-export { default as Championship } from "./championship/Championship";
 export { default as Landing } from "./landing/Landing";
 export { default as Code } from "./landing/components/code/Code";
 export * from "./landing/components";
