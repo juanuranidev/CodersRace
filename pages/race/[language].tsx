@@ -1,6 +1,6 @@
 import React from "react";
-import { PublicLayout } from "components";
 import { Race } from "views";
+import { PublicLayout } from "components";
 
 type Props = {};
 
@@ -11,3 +11,7 @@ export default function index({}: Props) {
     </PublicLayout>
   );
 }
+
+index.auth = {
+  unauthorized: "/",
+};

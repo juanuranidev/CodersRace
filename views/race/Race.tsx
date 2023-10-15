@@ -6,17 +6,19 @@ import { Container, Text, Flex, Grid, Box } from "@mantine/core";
 import { RaceCard, ProgressCard, TimeCard, CPM } from "./components";
 import { getRandomCodeByLanguageService } from "services/codes";
 import { Loader } from "components";
+import { useUserData } from "hooks";
 
 type Props = {};
 
 export default function Race({}: Props) {
   const router = useRouter();
+  const userData = useUserData();
   const { language } = router.query;
-  const [active, handlers] = useDisclosure(true);
   const hasFetchedCode = useRef(false);
+  const [active, handlers] = useDisclosure(true);
   const { milliseconds, startCounter, stopCounter } = useMillisecondCounter();
 
-  const [code, setCode] = useState<string | null>(null);
+  const [code, setCode] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -37,7 +39,7 @@ export default function Race({}: Props) {
     setIsLoading(true);
     try {
       const response = await getRandomCodeByLanguageService(language);
-      setCode(response.text);
+      setCode(response);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -64,7 +66,7 @@ export default function Race({}: Props) {
           Escribe el siguiente código
         </Text>
       </Flex>
-      {!code || isLoading ? (
+      {!code?.text || isLoading ? (
         <Flex justify="center" align="center" pt="10rem">
           <Loader />
         </Flex>
@@ -73,11 +75,11 @@ export default function Race({}: Props) {
           <Grid grow gutter="xl" mb="xs">
             <Grid.Col span={8}>
               <ProgressCard
-                milliseconds={milliseconds}
-                code={code!}
+                code={code?.text}
                 active={active}
                 handlers={handlers}
                 inputValue={inputValue}
+                milliseconds={milliseconds}
                 setInputValue={setInputValue}
               />
             </Grid.Col>
@@ -90,7 +92,7 @@ export default function Race({}: Props) {
           </Grid>
           <Box w="100%" h="100%">
             <RaceCard
-              code={code!}
+              code={code?.text}
               active={active}
               handlers={handlers}
               inputValue={inputValue}
