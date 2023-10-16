@@ -7,7 +7,7 @@ export const getRandomCodeByLanguageService = async (
     const response = await request({
       method: "GET",
       url: "api/codes/get-random",
-      param: {
+      params: {
         languageName,
       },
     });
