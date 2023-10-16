@@ -54,7 +54,7 @@ export default function LanguageCard({ language }: Props) {
   return (
     <motion.div
       variants={cardAnimations}
-      animate={hovered ? "cardHovered" : ""}
+      animate={hovered && handleRenderIcon(language?.name) ? "cardHovered" : ""}
     >
       <Link
         href={`/race/${language?.name.toLowerCase()}`}
@@ -73,9 +73,9 @@ export default function LanguageCard({ language }: Props) {
             <motion.img
               width={50}
               height={50}
-              src={handleRenderIcon(language?.name)}
               alt="javascript logo"
               variants={imageAnimations}
+              src={handleRenderIcon(language?.name)}
               animate={hovered ? "cardHovered" : ""}
             />
 

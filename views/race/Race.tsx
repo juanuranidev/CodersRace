@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { successToast, LANGUAGES_NAMES, useMillisecondCounter } from "lib";
+import { successToast, useMillisecondCounter } from "lib";
 import { useRouter } from "next/router";
 import { useDisclosure } from "@mantine/hooks";
-import { Container, Text, Flex, Grid, Box } from "@mantine/core";
-import { RaceCard, ProgressCard, TimeCard, CPM } from "./components";
+import { Container, Text, Flex } from "@mantine/core";
 import { getRandomCodeByLanguageService } from "services/codes";
-import { Loader } from "components";
 import { useUserData } from "hooks";
+import { postRaceService } from "services";
+import { handleRenderComponentBody } from "./Utils";
 
 type Props = {};
 
@@ -18,9 +18,11 @@ export default function Race({}: Props) {
   const [active, handlers] = useDisclosure(true);
   const { milliseconds, startCounter, stopCounter } = useMillisecondCounter();
 
+  const [cpm, setCpm] = useState("0");
   const [code, setCode] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
+  const [raceCompleted, setRaceCompleted] = useState(null);
 
   const handleManageTimer = () => {
     if (inputValue.length) {
@@ -29,9 +31,10 @@ export default function Race({}: Props) {
   };
 
   const handleHasFinishedTheRace = () => {
-    if (inputValue.length === code?.length) {
+    if (inputValue.length === code?.text?.length) {
       stopCounter();
       successToast("¡Completado!");
+      handlePostRace();
     }
   };
 
@@ -45,6 +48,27 @@ export default function Race({}: Props) {
       setIsLoading(false);
     }
     setIsLoading(false);
+  };
+
+  const handlePostRace = async () => {
+    setIsLoading(true);
+    try {
+      const data = {
+        cpm: cpm,
+        code: code._id,
+        user: userData._id,
+        timeInMs: milliseconds,
+        language: code.language._id,
+      };
+
+      const response = await postRaceService(data);
+
+      setRaceCompleted(response);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -62,50 +86,24 @@ export default function Race({}: Props) {
   return (
     <Container size="xl">
       <Flex justify="flex-start" align="center" pt="2.5rem" pb="1rem">
-        <Text color="text-primary.0" fw={500} fz={20}>
-          Escribe el siguiente código
-        </Text>
+        {/* <Text color="text-primary.0" fw={500} fz={20}>
+          {raceCompleted
+            ? "¡Carrera terminada!"
+            : "Escribe el siguiente código"}
+        </Text> */}
       </Flex>
-      {!code?.text || isLoading ? (
-        <Flex justify="center" align="center" pt="10rem">
-          <Loader />
-        </Flex>
-      ) : (
-        <React.Fragment>
-          <Grid grow gutter="xl" mb="xs">
-            <Grid.Col span={8}>
-              <ProgressCard
-                code={code?.text}
-                active={active}
-                handlers={handlers}
-                inputValue={inputValue}
-                milliseconds={milliseconds}
-                setInputValue={setInputValue}
-              />
-            </Grid.Col>
-            <Grid.Col span={2}>
-              <TimeCard milliseconds={milliseconds} />
-            </Grid.Col>
-            <Grid.Col span={2}>
-              <CPM milliseconds={milliseconds} inputValue={inputValue} />
-            </Grid.Col>
-          </Grid>
-          <Box w="100%" h="100%">
-            <RaceCard
-              code={code?.text}
-              active={active}
-              handlers={handlers}
-              inputValue={inputValue}
-              setInputValue={setInputValue}
-            />
-            {!active ? (
-              <Text align="center" mt="xl" fw={500} color="text-primary.0">
-                ¡Haz click en el código para escribir!
-              </Text>
-            ) : null}
-          </Box>
-        </React.Fragment>
-      )}
+      {handleRenderComponentBody({
+        cpm,
+        code,
+        setCpm,
+        active,
+        handlers,
+        isLoading,
+        inputValue,
+        milliseconds,
+        setInputValue,
+        raceCompleted,
+      })}
     </Container>
   );
 }

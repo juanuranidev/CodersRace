@@ -8,9 +8,7 @@ type Props = {
   inputValue: string;
 };
 
-export default function CPM({ milliseconds, inputValue }: Props) {
-  const [cpm, setCpm] = useState("0");
-
+export default function CPM({ milliseconds, inputValue, cpm, setCpm }: any) {
   useEffect(() => {
     if (milliseconds > 0 && inputValue.length > 0) {
       // Calcular CPM usando la fórmula CPM = (caracteres / tiempo) * 60000
