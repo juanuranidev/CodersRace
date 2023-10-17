@@ -1,8 +1,18 @@
 import React from "react";
-import { Container, Text, Flex, Grid, Box, Card, Group } from "@mantine/core";
+import {
+  Container,
+  Text,
+  Flex,
+  Grid,
+  Box,
+  Card,
+  Group,
+  Button,
+} from "@mantine/core";
 import { Loader } from "components";
 import { CPM, ProgressCard, RaceCard, TimeCard } from "./components";
 import { formatMillisecondsToSeconds, renderLanguageIcon } from "lib";
+import Link from "next/link";
 
 export const handleRenderComponentBody = ({
   cpm,
@@ -26,9 +36,14 @@ export const handleRenderComponentBody = ({
   } else if (raceCompleted) {
     return (
       <Box>
-        <Text fw={700} fz={40}>
-          ¡Felicidades!
-        </Text>
+        <Flex justify="space-between" align="center" mb="md">
+          <Text fw={700} fz={40}>
+            ¡Felicidades!
+          </Text>
+          <Link href="/play">
+            <Button variant="primary">Volver</Button>
+          </Link>
+        </Flex>
         <Card px="lg" radius="lg" bg="background-secondary.0">
           <Group>
             <Text fw={600} fz={18}>
@@ -53,6 +68,14 @@ export const handleRenderComponentBody = ({
             <Text fw={500} fz={15}>
               {raceCompleted?.language?.name}{" "}
               {renderLanguageIcon(raceCompleted?.language?.name, 20, 20)}
+            </Text>
+          </Group>
+          <Group>
+            <Text fw={600} fz={18}>
+              Código:
+            </Text>
+            <Text fw={500} fz={15}>
+              {raceCompleted?.code?.text}
             </Text>
           </Group>
         </Card>

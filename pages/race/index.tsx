@@ -7,7 +7,7 @@ type Props = {};
 export default function index({}: Props) {
   return (
     <PublicLayout>
-      <SelectLanguage />
+      <SelectLanguage baseUrl="/race" />
     </PublicLayout>
   );
 }

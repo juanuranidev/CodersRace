@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { successToast, useMillisecondCounter } from "lib";
 import { useRouter } from "next/router";
 import { useDisclosure } from "@mantine/hooks";
-import { Container, Text, Flex } from "@mantine/core";
+import { Container, Flex } from "@mantine/core";
 import { getRandomCodeByLanguageService } from "services/codes";
 import { useUserData } from "hooks";
 import { postRaceService } from "services";
@@ -10,7 +10,7 @@ import { handleRenderComponentBody } from "./Utils";
 
 type Props = {};
 
-export default function Race({}: Props) {
+export default function Race({ type }: any) {
   const router = useRouter();
   const userData = useUserData();
   const { language } = router.query;
@@ -18,23 +18,44 @@ export default function Race({}: Props) {
   const [active, handlers] = useDisclosure(true);
   const { milliseconds, startCounter, stopCounter } = useMillisecondCounter();
 
+  console.log(type);
+
   const [cpm, setCpm] = useState("0");
   const [code, setCode] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
-  const [raceCompleted, setRaceCompleted] = useState(null);
+  const [raceCompleted, setRaceCompleted] = useState<any>(null);
 
   const handleManageTimer = () => {
-    if (inputValue.length) {
+    if (inputValue?.length) {
       startCounter();
     }
   };
 
   const handleHasFinishedTheRace = () => {
-    if (inputValue.length === code?.text?.length) {
-      stopCounter();
-      successToast("¡Completado!");
-      handlePostRace();
+    if (inputValue?.length === code?.text?.length) {
+      if (type === "race") {
+        stopCounter();
+        successToast("¡Completado!");
+        handlePostRace();
+      } else if (type === "practice") {
+        stopCounter();
+        successToast("¡Completado!");
+
+        const race = {
+          cpm: cpm,
+          code: {
+            text: code?.text,
+          },
+          user: userData?._id,
+          timeInMs: milliseconds,
+          language: {
+            name: code?.language.name,
+          },
+        };
+
+        setRaceCompleted(race);
+      }
     }
   };
 
@@ -74,6 +95,7 @@ export default function Race({}: Props) {
   useEffect(() => {
     handleManageTimer();
     handleHasFinishedTheRace();
+    setInputValue(code?.text);
   }, [active, inputValue]);
 
   useEffect(() => {

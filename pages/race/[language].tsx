@@ -7,7 +7,7 @@ type Props = {};
 export default function index({}: Props) {
   return (
     <PublicLayout>
-      <Race />
+      <Race type="race" />
     </PublicLayout>
   );
 }
