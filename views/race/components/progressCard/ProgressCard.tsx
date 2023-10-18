@@ -24,7 +24,7 @@ export default function ProgressCard({
       <Progress
         w="100%"
         color="orange"
-        value={(inputValue.length * 100) / code?.length!}
+        value={(inputValue?.length * 100) / code?.length!}
       />
     </Card>
   );

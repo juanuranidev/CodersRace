@@ -34,7 +34,7 @@ export default function RaceCard({
 
   const handleChangeInput = (e: any) => {
     const input = e.target.value;
-    const inputLength = inputValue.length;
+    const inputLength = inputValue?.length;
 
     if (code[inputLength] === input) {
       setInputValue(inputValue + e.target.value);
