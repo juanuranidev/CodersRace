@@ -4,9 +4,9 @@ import { getLanguagesService } from "services";
 import { LanguageCard } from "./components";
 import { Loader } from "components";
 
-export default function SelectLanguage() {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+export default function SelectLanguage({ baseUrl }: any) {
   const [languages, setLanguages] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const handleGetLanguages = async () => {
     try {
@@ -43,7 +43,11 @@ export default function SelectLanguage() {
         breakpoints={[{ minWidth: "md", cols: 2 }]}
       >
         {languages.map((language: any) => (
-          <LanguageCard language={language} key={language?.id} />
+          <LanguageCard
+            baseUrl={baseUrl}
+            key={language?.id}
+            language={language}
+          />
         ))}
       </SimpleGrid>
     </Container>

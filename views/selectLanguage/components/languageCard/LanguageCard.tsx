@@ -10,6 +10,7 @@ import Link from "next/link";
 
 type Props = {
   language: any;
+  baseUrl: string;
 };
 
 const useStyles = createStyles({
@@ -22,7 +23,7 @@ const useStyles = createStyles({
   },
 });
 
-export default function LanguageCard({ language }: Props) {
+export default function LanguageCard({ language, baseUrl }: Props) {
   const { classes } = useStyles();
   const { hovered, ref } = useHover();
 
@@ -57,7 +58,7 @@ export default function LanguageCard({ language }: Props) {
       animate={hovered && handleRenderIcon(language?.name) ? "cardHovered" : ""}
     >
       <Link
-        href={`/race/${language?.name.toLowerCase()}`}
+        href={`${baseUrl}/${language?.name.toLowerCase()}`}
         style={{ textDecoration: "none" }}
       >
         <Card

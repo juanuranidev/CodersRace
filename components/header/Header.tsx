@@ -8,6 +8,8 @@ import {
   Container,
   createStyles,
   Text,
+  Box,
+  Card,
 } from "@mantine/core";
 import { useSession, signIn, signOut } from "next-auth/react";
 import GitHubIcon from "assets";
@@ -48,7 +50,7 @@ export default function Header({}: Props) {
             </Link>
           </Group>
           {userData?.image ? (
-            <Menu>
+            <Menu withArrow>
               <Menu.Target>
                 <Group style={{ cursor: "pointer" }}>
                   <Text>{userData?.githubUsername}</Text>

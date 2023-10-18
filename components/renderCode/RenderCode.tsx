@@ -10,8 +10,8 @@ export default function RenderCode({ code, input }: Props) {
   const renderText = (code: string, input: string): any => {
     return code.split("").map((character: string, index: number) => {
       const isSpace = character === "\n";
-      const inputLength = input.length - 1;
-      const hasCompleted = input.length > index;
+      const inputLength = input?.length - 1;
+      const hasCompleted = input?.length > index;
       const expectedCharacter = inputLength === index - 1;
 
       if (expectedCharacter && !isSpace) {
