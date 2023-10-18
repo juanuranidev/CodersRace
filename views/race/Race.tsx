@@ -18,8 +18,6 @@ export default function Race({ type }: any) {
   const [active, handlers] = useDisclosure(true);
   const { milliseconds, startCounter, stopCounter } = useMillisecondCounter();
 
-  console.log(type);
-
   const [cpm, setCpm] = useState("0");
   const [code, setCode] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -95,7 +93,6 @@ export default function Race({ type }: any) {
   useEffect(() => {
     handleManageTimer();
     handleHasFinishedTheRace();
-    setInputValue(code?.text);
   }, [active, inputValue]);
 
   useEffect(() => {
