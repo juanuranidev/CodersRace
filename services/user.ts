@@ -11,3 +11,20 @@ export const getLeaderboardService = async () => {
     throw new Error(error);
   }
 };
+
+export const getUserByIdService = async (
+  userId: string | string[] | undefined
+) => {
+  try {
+    const response = await request({
+      method: "GET",
+      url: "api/user/retrieve",
+      params: {
+        userId,
+      },
+    });
+    return response;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
