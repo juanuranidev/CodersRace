@@ -33,7 +33,7 @@ export default function Ranking({}) {
 
   return (
     <Container size="xl">
-      <Flex justify="flex-start" align="center" pt="2.5rem" pb="1rem">
+      <Flex justify="flex-start" align="center" pb="2.5rem">
         <Text color="text-primary.0" fw={500} fz={20}>
           Mejores corredores
         </Text>

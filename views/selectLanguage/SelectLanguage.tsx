@@ -33,7 +33,7 @@ export default function SelectLanguage({ baseUrl }: any) {
 
   return (
     <Container size="xl">
-      <Text py="2.5rem" color="text-primary.0" fw={500} fz={20}>
+      <Text pb="2.5rem" color="text-primary.0" fw={500} fz={20}>
         Elige tu lenguage
       </Text>
       <SimpleGrid

@@ -46,7 +46,7 @@ export default function Landing() {
 
   return (
     <Container bg="background-primary.0" size="full">
-      <Box>
+      <Box style={{ height: "85vh", overflow: "hidden" }}>
         {landingCodes.map((code: any) => (
           <Code key={code.text} code={code} />
         ))}

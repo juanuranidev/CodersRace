@@ -8,7 +8,7 @@ type Props = {};
 export default function Play({}: Props) {
   return (
     <Container size="xl">
-      <Text py="2.5rem" color="text-primary.0" fw={500} fz={20}>
+      <Text pb="2.5rem" color="text-primary.0" fw={500} fz={20}>
         Elige tu modo de juego
       </Text>
       <SimpleGrid
