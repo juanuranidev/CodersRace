@@ -1,38 +1,127 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Coders Race
 
-## Getting Started
+Coders race is an application to compete with other programmers to see who can write the fastest code. In this application you will be able to race writing functions in the shortest time possible. You will also have a ranking where you will be able to see your position with respect to the rest of the programmers.
 
-First, run the development server:
+My goal with this application was to start my way towards mastering both frontend and backend technologies to be able to work in both environments.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Although the challenge is mainly in the backend, you will find a frontend with a very good UX/UI, good coding practices and a project structure according to the size of the project.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![codersrace](https://github.com/juanuranidev/Freres/assets/96846723/c79c1e20-ee87-4956-9150-76774bd0caf1)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Technologies
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+The main technology used for the coders race frontend is Next.js. Also, in addition to the libraries automatically installed at startup, these are some of the most important libraries used:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- @mantine/core
+- @mantine/hooks
+- @types/luxon
+- axios
+- eslint
+- framer-motion
+- luxon
+- next-auth
+- react-hot-toast
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Project Structure
 
-## Learn More
+For this project I chose a structure according to the size of the project. It consists of main folders:
 
-To learn more about Next.js, take a look at the following resources:
+- adapters (adapt the information sent and received to the backend).
+- assets (images and icons)
+- components (components that are reused)
+- contexts (in charge of managing core information)
+- lib (constants, env variables, utils and hooks)
+- pages (next.js pages)
+- services (in charge of connecting to the api)
+- styles (all the styles of the application either mantine or css)
+- views (all the views of the application)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All these folders have their respective barrel (index.ts) in charge of facilitating the import of its components.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Features
 
-## Deploy on Vercel
+- Practice a race
+- Run a race
+- Leaderboard
+- User profiles
+- Login with GitHub
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Roadmap
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Language championships
+- Achievements
+- Friends
+
+## Installation
+
+To install and run the project in your local environment follow the steps below:
+
+### Prerequisites
+
+Make sure you have the following prerequisites installed before you begin:
+
+- [Node.js](https://nodejs.org/) (version 18 or higher)
+- [Backend of the application](https://github.com/juanuranidev/CodersRaceBackend) (necessary to connect to the api)
+
+### Installation steps
+
+1. Clone this repository on your local machine:
+   ```bash
+   git clone https://github.com/tu-usuario/tu-proyecto.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd codersrace
+   ```
+3. Installs the project dependencies:
+   ```bash
+   npm install
+   ```
+4. Create a .env.local file based on .env.example and add your environment variables:
+   `BACKEND_BASE_URL`
+
+   `NEXT_PUBLIC_GITHUB_CLIENT_ID`
+
+   `NEXT_PUBLIC_GITHUB_CLIENT_SECRET`
+
+5. Start the development application:
+   ```bash
+   npm run dev
+   ```
+6. Open your web browser and visit http://localhost:3000 to see the application at work.
+
+## About Me
+
+Proactive, creative, limitless and passionate about developing innovative and disruptive applications, on my way to becoming a software developer with a strong background in architecture.
+
+You can see all my information in my portfolio:
+
+https://juanurani.netlify.app/
+
+Also connect with me on LinkedIn:
+
+https://www.linkedin.com/in/juanurani/
+
+## License
+
+MIT License
+
+Copyright (c) [year] [fullname]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
