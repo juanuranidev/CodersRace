@@ -37,7 +37,7 @@ export default function Header({}: Props) {
   const userData = useUserData();
 
   return (
-    <MantineHeader height={70} style={{ backgroundColor: "red" }}>
+    <MantineHeader height={70}>
       <Container size="full" bg="#15141a" p="0">
         <Container size="xl" p="md">
           <Flex justify="space-between">
