@@ -67,7 +67,7 @@ Make sure you have the following prerequisites installed before you begin:
 
 1. Clone this repository on your local machine:
    ```bash
-   git clone https://github.com/tu-usuario/tu-proyecto.git
+   git clone https://github.com/juanuranidev/CodersRace
    ```
 2. Navigate to the project directory:
    ```bash
