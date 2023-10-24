@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { getUserByIdService } from "services";
 import { useRouter } from "next/router";
-import { useUserData } from "hooks";
+import { useUserData } from "lib";
 import GitHubIcon from "assets/icons/GitHub.svg";
 import Image from "next/image";
 import Link from "next/link";

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useDisclosure } from "@mantine/hooks";
 import { Container, Flex } from "@mantine/core";
 import { getRandomCodeByLanguageService } from "services/codes";
-import { useUserData } from "hooks";
+import { useUserData } from "lib";
 import { postRaceService } from "services";
 import { handleRenderComponentBody } from "./Utils";
 

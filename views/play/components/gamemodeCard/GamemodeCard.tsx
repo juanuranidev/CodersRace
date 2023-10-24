@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Flex, Text, createStyles, Tooltip } from "@mantine/core";
-import { useUserData } from "hooks";
+import { useUserData } from "lib";
 import { useHover } from "@mantine/hooks";
 import { motion } from "framer-motion";
 import Link from "next/link";

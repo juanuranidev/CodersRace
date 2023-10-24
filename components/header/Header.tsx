@@ -16,7 +16,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import GitHubIcon from "assets";
 import Image from "next/image";
 import Link from "next/link";
-import { useUserData } from "hooks";
+import { useUserData } from "lib";
 import ArrowDown from "assets/icons/ArrowDown.svg";
 
 const useStyles = createStyles(() => ({
