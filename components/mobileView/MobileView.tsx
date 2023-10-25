@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Text, Container } from "@mantine/core";
-import PublicLayout from "components/layout/PublicLayout";
 
 type Props = {};
 

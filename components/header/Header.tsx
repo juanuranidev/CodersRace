@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Text,
   Menu,
   Flex,
   Group,
@@ -7,17 +8,14 @@ import {
   Avatar,
   Container,
   createStyles,
-  Text,
   Header as MantineHeader,
-  Box,
-  Card,
 } from "@mantine/core";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
+import { useUserData } from "lib";
 import GitHubIcon from "assets";
+import ArrowDown from "assets/icons/ArrowDown.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { useUserData } from "lib";
-import ArrowDown from "assets/icons/ArrowDown.svg";
 
 const useStyles = createStyles(() => ({
   link: {
