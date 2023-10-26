@@ -1,28 +1,18 @@
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  Text,
-  SimpleGrid,
-  Group,
-  Avatar,
-  Flex,
-  Card,
-  Box,
-} from "@mantine/core";
+import { Container, Text, Group, Avatar, Flex, Card } from "@mantine/core";
 import { getUserByIdService } from "services";
-import { useRouter } from "next/router";
 import { useUserData } from "lib";
-import GitHubIcon from "assets/icons/GitHub.svg";
-import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { Loader } from "components";
+import Link from "next/link";
+import Image from "next/image";
+import GitHubIcon from "assets/icons/GitHub.svg";
 
 type Props = {};
 
 export default function Profile({}: Props) {
   const router = useRouter();
   const { id } = router.query;
-  const userData = useUserData();
 
   const [user, setUser] = useState<any>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -43,8 +33,6 @@ export default function Profile({}: Props) {
       handleGetUserById();
     }
   }, [id]);
-
-  console.log(user);
 
   return (
     <Container size="xl">
