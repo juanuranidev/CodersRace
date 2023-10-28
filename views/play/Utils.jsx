@@ -30,3 +30,17 @@ export const gamemodes = [
     requiresUser: false,
   },
 ];
+
+export const cardAnimations = {
+  cardHovered: {
+    scale: [1, 0.95, 1],
+    transition: { duration: 0.25 },
+  },
+};
+
+export const imageAnimations = {
+  cardHovered: {
+    scale: [1, 1.1, 1],
+    transition: { duration: 0.3 },
+  },
+};

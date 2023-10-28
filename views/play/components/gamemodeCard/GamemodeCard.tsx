@@ -1,9 +1,13 @@
 import React from "react";
-import { Card, Flex, Text, createStyles, Tooltip } from "@mantine/core";
+import { Card, Flex, Text, createStyles, Tooltip, Image } from "@mantine/core";
+import { cardAnimations, imageAnimations } from "views/play/Utils";
 import { useUserData } from "lib";
 import { useHover } from "@mantine/hooks";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import GamemodeCar1 from "assets/images/GamemodeCar1.jpg";
+import GamemodeCar2 from "assets/images/GamemodeCar2.jpg";
+import GamemodeCar3 from "assets/images/GamemodeCar3.jpg";
 
 type Props = {};
 
@@ -21,7 +25,7 @@ const useStyles = createStyles((theme, params: any) => {
   return {
     languageCard: {
       userSelect: "none",
-      opacity: handleIsGamemodeDisabled(gamemode, userData) ? "0.4" : "1",
+      opacity: handleIsGamemodeDisabled(gamemode, userData) ? "0.2" : "1",
       cursor: handleIsGamemodeDisabled(gamemode, userData)
         ? "no-drop"
         : "pointer",
@@ -32,24 +36,12 @@ const useStyles = createStyles((theme, params: any) => {
   };
 });
 
-export default function GamemodeCard({ gamemode }: any) {
+export default function GamemodeCard({ gamemode, index }: any) {
   const userData = useUserData();
   const { hovered, ref } = useHover();
   const { classes } = useStyles({ gamemode, userData });
 
-  const cardAnimations = {
-    cardHovered: {
-      scale: [1, 0.95, 1],
-      transition: { duration: 0.25 },
-    },
-  };
-
-  const imageAnimations = {
-    cardHovered: {
-      scale: [1, 1.1, 1],
-      transition: { duration: 0.3 },
-    },
-  };
+  const gamemodeImages = [GamemodeCar1.src, GamemodeCar2.src, GamemodeCar3.src];
 
   return (
     <Tooltip
@@ -67,14 +59,21 @@ export default function GamemodeCard({ gamemode }: any) {
       >
         {handleIsGamemodeDisabled(gamemode, userData) ? (
           <Card
-            p="xl"
+            p="0"
+            pb="md"
             w="100%"
-            py="3rem"
             ref={ref}
             radius="md"
             bg="background-secondary.0"
-            className={classes.languageCard}
+            className={`card-container ${classes.languageCard}`}
           >
+            <Image
+              width="100%"
+              height={250}
+              alt="car image"
+              className="gradient-mask-image"
+              src={gamemodeImages[index]}
+            />
             <Flex align="center" justify="center">
               <motion.img
                 width={50}
@@ -91,14 +90,21 @@ export default function GamemodeCard({ gamemode }: any) {
         ) : (
           <Link href={gamemode?.url} style={{ textDecoration: "none" }}>
             <Card
-              p="xl"
+              p="0"
+              pb="lg"
               w="100%"
-              py="3rem"
               ref={ref}
               radius="md"
               bg="background-secondary.0"
-              className={classes.languageCard}
+              className={`card-container ${classes.languageCard}`}
             >
+              <Image
+                width="100%"
+                height={250}
+                alt="car image"
+                className="gradient-mask-image"
+                src={gamemodeImages[index]}
+              />
               <Flex align="center" justify="center">
                 <motion.img
                   width={50}
@@ -108,7 +114,6 @@ export default function GamemodeCard({ gamemode }: any) {
                   variants={imageAnimations}
                   animate={hovered ? "cardHovered" : ""}
                 />
-
                 <Text color="text-primary.0" fw={600} fz={30} ml="sm">
                   {gamemode?.name}
                 </Text>

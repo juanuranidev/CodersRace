@@ -17,8 +17,8 @@ export default function Play({}: Props) {
         verticalSpacing="xl"
         breakpoints={[{ minWidth: "md", cols: 2 }]}
       >
-        {gamemodes.map((gamemode: any) => (
-          <GamemodeCard gamemode={gamemode} key={gamemode.name} />
+        {gamemodes.map((gamemode: any, index: number) => (
+          <GamemodeCard gamemode={gamemode} key={index} index={index} />
         ))}
       </SimpleGrid>
     </Container>
