@@ -71,19 +71,6 @@
   }
 }
 
-.card-container {
-  overflow: hidden;
-  position: relative;
-}
-
-.gradient-mask-image {
-  position: relative;
-  width: 100%;
-  height: auto;
-  mask-image: linear-gradient(
-    to top,
-    transparent,
-    #2a2930
-  ); /* Ajusta el color y la dirección del degradado según tu preferencia */
-  mask-mode: alpha;
+.image-gradient {
+  mask-image: linear-gradient(to top, transparent, #2a2930);
 }
