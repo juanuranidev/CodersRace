@@ -33,8 +33,8 @@ export const gamemodes = [
 
 export const cardAnimations = {
   cardHovered: {
-    scale: [1, 0.95, 1],
-    transition: { duration: 0.25 },
+    scale: [1.05, 1, 0.95, 1],
+    transition: { duration: 0.4 },
   },
 };
 

@@ -54,7 +54,7 @@ export default function GamemodeCard({ gamemode, index }: any) {
       <motion.div
         variants={cardAnimations}
         animate={
-          handleIsGamemodeDisabled(gamemode, userData) ? "cardHovered" : ""
+          handleIsGamemodeDisabled(gamemode, userData) ? "" : "cardHovered"
         }
       >
         {handleIsGamemodeDisabled(gamemode, userData) ? (
@@ -65,27 +65,25 @@ export default function GamemodeCard({ gamemode, index }: any) {
             ref={ref}
             radius="md"
             bg="background-secondary.0"
-            className={`card-container ${classes.languageCard}`}
+            className={classes.languageCard}
           >
             <Image
               width="100%"
               height={250}
               alt="car image"
-              className="gradient-mask-image"
+              className="image-gradient"
               src={gamemodeImages[index]}
             />
-            <Flex align="center" justify="center">
-              <motion.img
-                width={50}
-                height={50}
-                src={gamemode?.icon}
-                alt="javascript logo"
-              />
 
-              <Text color="text-primary.0" fw={600} fz={30} ml="sm">
-                {gamemode?.name}
-              </Text>
-            </Flex>
+            <Text
+              align="center"
+              color="text-primary.0"
+              fw={600}
+              fz={30}
+              ml="sm"
+            >
+              {gamemode?.name}
+            </Text>
           </Card>
         ) : (
           <Link href={gamemode?.url} style={{ textDecoration: "none" }}>
@@ -96,28 +94,25 @@ export default function GamemodeCard({ gamemode, index }: any) {
               ref={ref}
               radius="md"
               bg="background-secondary.0"
-              className={`card-container ${classes.languageCard}`}
+              className={classes.languageCard}
             >
               <Image
                 width="100%"
                 height={250}
                 alt="car image"
-                className="gradient-mask-image"
+                className="image-gradient"
                 src={gamemodeImages[index]}
               />
-              <Flex align="center" justify="center">
-                <motion.img
-                  width={50}
-                  height={50}
-                  src={gamemode?.icon}
-                  alt="javascript logo"
-                  variants={imageAnimations}
-                  animate={hovered ? "cardHovered" : ""}
-                />
-                <Text color="text-primary.0" fw={600} fz={30} ml="sm">
-                  {gamemode?.name}
-                </Text>
-              </Flex>
+
+              <Text
+                ml="sm"
+                fz={30}
+                fw={600}
+                align="center"
+                color="text-primary.0"
+              >
+                {gamemode?.name}
+              </Text>
             </Card>
           </Link>
         )}
