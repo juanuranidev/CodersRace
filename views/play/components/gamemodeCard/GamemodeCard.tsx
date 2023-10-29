@@ -1,8 +1,7 @@
 import React from "react";
-import { Card, Flex, Text, createStyles, Tooltip, Image } from "@mantine/core";
-import { cardAnimations, imageAnimations } from "views/play/Utils";
+import { Card, Text, createStyles, Tooltip, Image } from "@mantine/core";
+import { cardAnimations } from "views/play/Utils";
 import { useUserData } from "lib";
-import { useHover } from "@mantine/hooks";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import GamemodeCar1 from "assets/images/GamemodeCar1.jpg";
@@ -38,9 +37,7 @@ const useStyles = createStyles((theme, params: any) => {
 
 export default function GamemodeCard({ gamemode, index }: any) {
   const userData = useUserData();
-  const { hovered, ref } = useHover();
   const { classes } = useStyles({ gamemode, userData });
-
   const gamemodeImages = [GamemodeCar1.src, GamemodeCar2.src, GamemodeCar3.src];
 
   return (
@@ -53,16 +50,13 @@ export default function GamemodeCard({ gamemode, index }: any) {
     >
       <motion.div
         variants={cardAnimations}
-        animate={
-          handleIsGamemodeDisabled(gamemode, userData) ? "" : "cardHovered"
-        }
+        animate={!handleIsGamemodeDisabled(gamemode, userData) && "cardHovered"}
       >
         {handleIsGamemodeDisabled(gamemode, userData) ? (
           <Card
             p="0"
             pb="md"
             w="100%"
-            ref={ref}
             radius="md"
             bg="background-secondary.0"
             className={classes.languageCard}
@@ -91,7 +85,6 @@ export default function GamemodeCard({ gamemode, index }: any) {
               p="0"
               pb="lg"
               w="100%"
-              ref={ref}
               radius="md"
               bg="background-secondary.0"
               className={classes.languageCard}
