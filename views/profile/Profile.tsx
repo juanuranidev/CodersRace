@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Text, Group, Avatar, Flex, Card } from "@mantine/core";
 import { getUserByIdService } from "services";
-import { useUserData } from "lib";
 import { useRouter } from "next/router";
 import { Loader } from "components";
 import Link from "next/link";

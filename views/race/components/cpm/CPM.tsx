@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Card, Flex, Text, Tooltip } from "@mantine/core";
 import InfoIcon from "assets/icons/Info.svg";
 import Image from "next/image";

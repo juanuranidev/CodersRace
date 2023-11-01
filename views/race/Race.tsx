@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { successToast, useMillisecondCounter } from "lib";
-import { useRouter } from "next/router";
-import { useDisclosure } from "@mantine/hooks";
-import { Container, Flex } from "@mantine/core";
 import { getRandomCodeByLanguageService } from "services/codes";
-import { useUserData } from "lib";
-import { postRaceService } from "services";
 import { handleRenderComponentBody } from "./Utils";
+import { postRaceService } from "services";
+import { Container, Flex } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { useUserData } from "lib";
+import { useRouter } from "next/router";
 
 type Props = {};
 

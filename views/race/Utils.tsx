@@ -1,17 +1,8 @@
 import React from "react";
-import {
-  Container,
-  Text,
-  Flex,
-  Grid,
-  Box,
-  Card,
-  Group,
-  Button,
-} from "@mantine/core";
-import { Loader } from "components";
-import { CPM, ProgressCard, RaceCard, TimeCard } from "./components";
 import { formatMillisecondsToSeconds, renderLanguageIcon } from "lib";
+import { Text, Flex, Grid, Box, Card, Group, Button } from "@mantine/core";
+import { CPM, ProgressCard, RaceCard, TimeCard } from "./components";
+import { Loader } from "components";
 import Link from "next/link";
 
 export const handleRenderComponentBody = ({

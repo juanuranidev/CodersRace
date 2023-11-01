@@ -1,6 +1,5 @@
 import React from "react";
-import { Card, Text, Progress, Group, Flex, Box } from "@mantine/core";
-import { formatMillisecondsToSeconds } from "lib";
+import { Card, Text, Progress } from "@mantine/core";
 
 type Props = {
   code: string;
