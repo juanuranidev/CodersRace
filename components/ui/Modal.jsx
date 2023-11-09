@@ -1,5 +1,6 @@
 import React from "react";
+import { Modal as MantineModal } from "@mantine/core";
 
 export default function Modal() {
-  return <div>Modal</div>;
+  return <MantineModal>Modal</MantineModal>;
 }

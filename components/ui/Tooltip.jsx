@@ -1,5 +1,6 @@
 import React from "react";
+import { Tooltip as MantineTooltip } from "@mantine/core";
 
 export default function Tooltip() {
-  return <div>Tooltip</div>;
+  return <MantineTooltip>Tooltip</MantineTooltip>;
 }
