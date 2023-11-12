@@ -2,12 +2,13 @@ import React from "react";
 import { Tooltip as MantineTooltip } from "@mantine/core";
 
 export default function Tooltip({
-  label,
-  transition,
-  withArrow,
-  multiline,
   w,
   h,
+  label,
+  children,
+  withArrow,
+  multiline,
+  transition,
 }) {
   return (
     <MantineTooltip
@@ -18,7 +19,7 @@ export default function Tooltip({
       w={w}
       h={h}
     >
-      Tooltip
+      {children}
     </MantineTooltip>
   );
 }
