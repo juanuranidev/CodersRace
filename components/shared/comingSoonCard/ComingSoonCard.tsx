@@ -1,10 +1,11 @@
 import React from "react";
 import { useHover } from "@mantine/hooks";
-import { Card, Flex, Text, Box } from "@mantine/core";
+import { Flex, Text, Box } from "@mantine/core";
 import JavaScriptIcon from "assets/icons/JavaScript.svg";
 import TypeScriptIcon from "assets/icons/TypeScript.svg";
 import PythonIcon from "assets/icons/Python.svg";
 import { motion } from "framer-motion";
+import { Card } from "components/ui";
 
 type Props = {};
 
