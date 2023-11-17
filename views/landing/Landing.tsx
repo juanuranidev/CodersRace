@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
-  Flex,
   Text,
   Title,
   Button,
@@ -9,7 +8,7 @@ import {
   createStyles,
 } from "@mantine/core";
 import { landingCodes } from "lib";
-import { RenderCode } from "components";
+import { Flex, RenderCode } from "components";
 import { Code } from "./components";
 import Link from "next/link";
 
@@ -52,7 +51,7 @@ export default function Landing() {
         ))}
       </Box>
       <Container px="xl" size="xl" className={classes.floatingHeader}>
-        <Flex justify="space-between" align="center" h="100%">
+        <Flex justifyContent="space-between" alignItems="center" heigh="100%">
           <Box w="50%">
             <Title size="h1" fz="4rem" color="brand-primary.0">
               Coders Race
