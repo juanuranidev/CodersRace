@@ -52,10 +52,10 @@ export default function Landing() {
       </Box>
       <Container px="xl" size="xl" className={classes.floatingHeader}>
         <Flex
-          direction="column"
-          justifyContent="space-between"
-          alignItems="center"
           heigh="100%"
+          direction="column"
+          alignItems="center"
+          justifyContent="space-between"
         >
           <Flex width="50%">
             <Title size="h1" fz="4rem" color="brand-primary.0">
