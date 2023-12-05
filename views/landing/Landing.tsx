@@ -51,13 +51,8 @@ export default function Landing() {
         ))}
       </Box>
       <Container px="xl" size="xl" className={classes.floatingHeader}>
-        <Flex
-          heigh="100%"
-          direction="column"
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Flex width="50%">
+        <Flex heigh="100%" alignItems="center" justifyContent="space-between">
+          <Flex width="50%" direction="column" alignItems="flex-start">
             <Title size="h1" fz="4rem" color="brand-primary.0">
               Coders Race
             </Title>

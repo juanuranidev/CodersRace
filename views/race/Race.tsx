@@ -45,7 +45,7 @@ export default function Race({ type }: any) {
           code: {
             text: code?.text,
           },
-          user: userData?._id,
+          user: userData?.id,
           timeInMs: milliseconds,
           language: {
             name: code?.language.name,
@@ -73,11 +73,10 @@ export default function Race({ type }: any) {
     setIsLoading(true);
     try {
       const data = {
-        cpm: cpm,
-        code: code._id,
-        user: userData._id,
+        cpm: Number(cpm),
+        code: code.id,
+        user: userData.id,
         timeInMs: milliseconds,
-        language: code.language._id,
       };
 
       const response = await postRaceService(data);
