@@ -1,7 +1,7 @@
 const LANGUAGES_NAMES = {
-  JAVASCRIPT: "JavaScript",
-  TYPESCRIPT: "TypeScript",
-  PYTHON: "Python",
+  JAVASCRIPT: "javascript",
+  TYPESCRIPT: "typescript",
+  PYTHON: "python",
 };
 
 export default LANGUAGES_NAMES;
