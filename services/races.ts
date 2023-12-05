@@ -3,8 +3,8 @@ import { request } from "lib";
 export const postRaceService = async (data: any) => {
   try {
     const response = await request({
-      method: "POSt",
-      url: "api/race/create",
+      method: "POST",
+      url: "api/race",
       data: data,
     });
     return response.data;
