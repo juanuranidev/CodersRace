@@ -44,13 +44,23 @@ export default function Landing() {
   }, [inputValue]);
 
   return (
-    <Container bg="background-primary.0" size="full">
-      <Box style={{ height: "85vh", overflow: "hidden" }}>
+    <div className="container">
+      <div style={{ height: "85vh", overflow: "hidden" }}>
         {landingCodes.map((code: any) => (
           <Code key={code.text} code={code} />
         ))}
-      </Box>
-      <Container px="xl" size="xl" className={classes.floatingHeader}>
+      </div>
+      {/* <div
+        className="container"
+        style={{
+          top: "50%",
+          left: "50%",
+          width: "100%",
+          position: "fixed",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+       <Container px="xl" size="xl" className={classes.floatingHeader}> 
         <Flex heigh="100%" alignItems="center" justifyContent="space-between">
           <Flex width="50%" direction="column" alignItems="flex-start">
             <Title size="h1" fz="4rem" color="brand-primary.0">
@@ -69,7 +79,8 @@ export default function Landing() {
             <RenderCode code={landingCode} input={inputValue} />
           </Box>
         </Flex>
-      </Container>
-    </Container>
+        </Container> 
+      </div> */}
+    </div>
   );
 }
