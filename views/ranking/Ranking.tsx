@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {
-  Flex,
-  Text,
-  Card,
-  Table,
-  Group,
-  Avatar,
-  Container,
-} from "@mantine/core";
+import { Flex, Text, Table, Group, Avatar, Container } from "@mantine/core";
 import { getLeaderboardService } from "services";
 import { Loader } from "components";
+import { Button } from "@nextui-org/react";
+import { Switch } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
+
+import { Image } from "@nextui-org/react";
 
 export default function Ranking({}) {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,6 +35,41 @@ export default function Ranking({}) {
           Mejores corredores
         </Text>
       </Flex>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <Button color="primary" variant="solid">
+          Solid
+        </Button>
+        <Button color="primary" variant="faded" isLoading={!0}>
+          Faded
+        </Button>
+        <Button color="primary" variant="bordered">
+          Bordered
+        </Button>
+        <Button color="primary" variant="light">
+          Light
+        </Button>
+        <Button color="primary" variant="flat">
+          Flat
+        </Button>
+        <Button color="primary" variant="ghost">
+          Ghost
+        </Button>
+        <Button color="primary" variant="shadow">
+          Shadow
+        </Button>
+      </div>
+
+      <Image
+        width={300}
+        alt="NextUI hero Image"
+        src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
+      />
+      <Switch defaultSelected aria-label="Automatic updates" />
       {isLoading ? (
         <Flex justify="center" align="center" pt="10rem">
           <Loader />
@@ -47,7 +79,11 @@ export default function Ranking({}) {
           <Table>
             <thead>
               <tr>
-                <th>Posición</th>
+                <th>
+                  <p className="text-small font-semibold leading-none text-default-600">
+                    Posición
+                  </p>
+                </th>
                 <th>Usuario</th>
                 <th>CPM Promedio</th>
                 <th>Carreras</th>
@@ -55,7 +91,7 @@ export default function Ranking({}) {
             </thead>
             <tbody>
               {leaderboard.map((user: any, index) => (
-                <tr key={user._id}>
+                <tr key={user.id}>
                   <td>
                     <Text fw={600} fz={16}>
                       {index + 1}
