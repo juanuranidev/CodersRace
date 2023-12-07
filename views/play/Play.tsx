@@ -7,7 +7,7 @@ type Props = {};
 
 export default function Play({}: Props) {
   return (
-    <Container size="xl">
+    <div className="container mx-auto">
       <Text pb="2.5rem" color="text-primary.0" fw={500} fz={20}>
         Elige tu modo de juego
       </Text>
@@ -21,6 +21,6 @@ export default function Play({}: Props) {
           <GamemodeCard gamemode={gamemode} key={index} index={index} />
         ))}
       </SimpleGrid>
-    </Container>
+    </div>
   );
 }

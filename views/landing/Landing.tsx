@@ -1,29 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Text,
-  Title,
-  Button,
-  Container,
-  createStyles,
-} from "@mantine/core";
 import { landingCodes } from "lib";
-import { Flex, RenderCode } from "components";
+import { RenderCode } from "components";
+import { Button } from "@nextui-org/react";
 import { Code } from "./components";
 import Link from "next/link";
 
-const useStyles = createStyles({
-  floatingHeader: {
-    top: "50%",
-    left: "50%",
-    width: "100%",
-    position: "fixed",
-    transform: "translate(-50%, -50%)",
-  },
-});
-
 export default function Landing() {
-  const { classes } = useStyles();
   const landingCode = `import React from 'react';\nimport { Code } from '@mantine/core';\n\nfunction Demo() {\n    return <Code>React.createElement()</Code>;\n},`;
 
   const [inputValue, setInputValue] = useState<string>("");
@@ -44,43 +26,26 @@ export default function Landing() {
   }, [inputValue]);
 
   return (
-    <div className="container">
-      <div style={{ height: "85vh", overflow: "hidden" }}>
+    <div>
+      <div className="overflow-hidden" style={{ height: "85vh" }}>
         {landingCodes.map((code: any) => (
           <Code key={code.text} code={code} />
         ))}
       </div>
-      {/* <div
-        className="container"
-        style={{
-          top: "50%",
-          left: "50%",
-          width: "100%",
-          position: "fixed",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-       <Container px="xl" size="xl" className={classes.floatingHeader}> 
-        <Flex heigh="100%" alignItems="center" justifyContent="space-between">
-          <Flex width="50%" direction="column" alignItems="flex-start">
-            <Title size="h1" fz="4rem" color="brand-primary.0">
-              Coders Race
-            </Title>
-            <Text size="md" fz="1rem" color="text-primary.0" fw={500}>
+      <div className="container max-w-7xl mx-auto fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
+        <div className="flex justify-between items-center">
+          <div className="flex flex-col items-start ">
+            <h1 className="text-4xl text-brand-primary mb-2"> Coders Race</h1>
+            <p className="text-md text-text-primary font-semibold mb-5">
               ¿Qué tan rápido puedes codear?
-            </Text>
+            </p>
             <Link href="/play">
-              <Button variant="primary" mt="md">
-                Comenzar
-              </Button>
+              <Button color="primary">Comenzar</Button>
             </Link>
-          </Flex>
-          <Box w="50%">
-            <RenderCode code={landingCode} input={inputValue} />
-          </Box>
-        </Flex>
-        </Container> 
-      </div> */}
+          </div>
+          <RenderCode code={landingCode} input={inputValue} />
+        </div>
+      </div>
     </div>
   );
 }
