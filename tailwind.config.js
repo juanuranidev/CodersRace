@@ -27,7 +27,6 @@ module.exports = {
           layout: {},
           colors: {
             background: "#15141a",
-            foreground: "#f9f9f9",
             primary: {
               50: "#FC5D1B",
               100: "#e35418",
@@ -42,7 +41,19 @@ module.exports = {
               DEFAULT: "#e35418",
               foreground: "#f9f9f9",
             },
-            // "text-primary": "#f9f9f9",
+            secondary: {
+              50: "#f9f9f9",
+              100: "#e0e0e0",
+              200: "#c7c7c7",
+              300: "#aeaeae",
+              400: "#959595",
+              500: "#7d7d7d",
+              600: "#646464",
+              700: "#4b4b4b",
+              800: "#323232",
+              DEFAULT: "#f9f9f9",
+              foreground: "#f9f9f9",
+            },
           },
         },
       },
