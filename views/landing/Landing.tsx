@@ -35,12 +35,16 @@ export default function Landing() {
       <div className="container max-w-7xl mx-auto fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
         <div className="flex justify-between items-center">
           <div className="flex flex-col items-start ">
-            <h1 className="text-4xl text-brand-primary mb-2"> Coders Race</h1>
-            <p className="text-md text-text-primary font-semibold mb-5">
+            <h1 className="text-4xl text-primary mb-2 font-bold text-6xl">
+              Coders Race
+            </h1>
+            <p className="text-md font-semibold mb-5">
               ¿Qué tan rápido puedes codear?
             </p>
             <Link href="/play">
-              <Button color="primary">Comenzar</Button>
+              <Button color="primary" className="font-semibold">
+                Comenzar
+              </Button>
             </Link>
           </div>
           <RenderCode code={landingCode} input={inputValue} />
