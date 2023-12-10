@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, Kbd } from "@mantine/core";
+import { Kbd } from "@mantine/core";
+import { Card } from "@nextui-org/react";
 
 type Props = {
   code: string;
@@ -93,7 +94,7 @@ export default function RenderCode({ code, input }: Props) {
   };
 
   return (
-    <Card px="lg" bg="background-secondary.0" radius="lg">
+    <Card className="bg-backgroundSecondary p-5">
       <pre style={{ fontFamily: "Poppins, sans-serif" }}>
         {renderText(code, input)}
       </pre>

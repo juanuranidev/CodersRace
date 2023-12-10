@@ -1,65 +1,33 @@
 import React from "react";
 import {
-  Text,
-  Menu,
-  Flex,
-  Button as MantineButton,
-  Group,
+  Link,
   Avatar,
-  Container,
-  createStyles,
-  Header as MantineHeader,
-} from "@mantine/core";
-import { signIn, signOut } from "next-auth/react";
-import { useUserData } from "lib";
-import GitHubIcon from "assets";
-import ArrowDown from "assets/icons/ArrowDown.svg";
-import Image from "next/image";
-import {
   Dropdown,
-  DropdownTrigger,
+  DropdownItem,
   DropdownMenu,
   DropdownSection,
-  DropdownItem,
-  Divider,
+  DropdownTrigger,
 } from "@nextui-org/react";
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  Button,
-} from "@nextui-org/react";
+import { signIn, signOut } from "next-auth/react";
+import { useUserData } from "lib";
+import { useRouter } from "next/router";
 import GitHubButton from "../GitHubButton/GitHubButton";
-
-const useStyles = createStyles(() => ({
-  link: {
-    color: "#ffffff",
-    textDecoration: "none",
-    fontWeight: 500,
-    "&:hover": {
-      textDecoration: "underline",
-    },
-  },
-}));
+import ArrowDown from "assets/icons/ArrowDown.svg";
+import Image from "next/image";
 
 type Props = {};
 
 export default function Header({}: Props) {
+  const router = useRouter();
   const userData = useUserData();
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto p-5 h-[5rem]">
       <div
-        // isBordered
-        className=" bg-background flex flex-row justify-around"
+        className=" bg-backgroundPrimary flex flex-row justify-between"
         style={{ minWidth: "100%", width: "100%" }}
       >
-        <div
-        // justify="start"
-        // className="flex flex-row gap-6"
-        >
+        <div className="flex flex-row gap-6">
           <Link
             className="font-semibold hover:underline"
             color="secondary"
@@ -82,72 +50,52 @@ export default function Header({}: Props) {
             Ranking
           </Link>
         </div>
-        <div
-        // justify="end"
-        // className="min-w-full"
-        >
-          <div className="cursor-pointer">
-            {userData ? (
-              <Dropdown className="cursor-pointer">
-                <DropdownTrigger>
-                  {/* <Button variant="bordered">Open Menu</Button> */}
-                  {/* <Group style={{ cursor: "pointer" }} spacing="xs"> */}
-                  <div className="flex gap-2">
-                    <Avatar radius="xl" src={userData?.image} />
-                    <Image
-                      src={ArrowDown.src}
-                      width={20}
-                      height={20}
-                      alt="arrow icon"
-                    />
-                  </div>
-                  {/* </Group> */}
-                </DropdownTrigger>
-                <DropdownMenu closeOnSelect={false}>
+        <div className="cursor-pointer">
+          {userData && userData ? (
+            <Dropdown className="cursor-pointer">
+              <DropdownTrigger>
+                <div className="flex gap-2">
+                  <Avatar radius="lg" src={userData?.image} />
+                  <Image
+                    width={20}
+                    height={20}
+                    alt="arrow icon"
+                    src={ArrowDown.src}
+                  />
+                </div>
+              </DropdownTrigger>
+              <DropdownMenu closeOnSelect={false} disabledKeys={["github"]}>
+                <DropdownSection aria-label="Profile & Actions" showDivider>
                   <DropdownItem
-                    key="new"
-                    // variant=""
-                    onClick={undefined}
+                    className="opacity-100 cursor-default"
+                    isReadOnly
+                    key="github"
+                    color="secondary"
                     style={{ cursor: "default" }}
                   >
-                    <Text>{userData?.githubUsername}</Text>
+                    <p>{userData?.githubUsername}</p>
                   </DropdownItem>
-                  <DropdownItem
-                    key="new"
-                    // variant=""
-                    onClick={undefined}
-                    style={{ cursor: "default" }}
-                  >
-                    <Divider />
-                  </DropdownItem>
-                  <DropdownItem key="copy">
-                    <Link
-                      href={`/profile/${userData.id}`}
-                      style={{
-                        display: "flex",
-                        textDecoration: "none",
-                        width: "100%",
-                      }}
-                    >
-                      Perfil
-                    </Link>
-                  </DropdownItem>
-                  <DropdownItem
-                    onClick={() => signOut()}
-                    key="delete"
-                    className="text-danger"
-                    color="danger"
-                  >
-                    Cerrar sesión
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            ) : (
-              <GitHubButton onClick={() => signIn("github")}>
-                Sign in
-              </GitHubButton>
-            )}
-          </div>
+                </DropdownSection>
+                <DropdownItem
+                  onClick={() => router.replace(`/profile/${userData?.id}`)}
+                  className="text-secondary"
+                >
+                  Perfil
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => signOut()}
+                  className="text-danger"
+                  color="danger"
+                >
+                  Cerrar sesión
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          ) : (
+            <GitHubButton onClick={() => signIn("github")}>
+              Sign in
+            </GitHubButton>
+          )}
         </div>
       </div>
     </div>
