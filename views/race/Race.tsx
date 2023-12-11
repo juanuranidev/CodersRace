@@ -3,7 +3,6 @@ import { successToast, useMillisecondCounter } from "lib";
 import { getRandomCodeByLanguageService } from "services/codes";
 import { handleRenderComponentBody } from "./Utils";
 import { postRaceService } from "services";
-import { Container, Flex } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useUserData } from "lib";
 import { useRouter } from "next/router";
@@ -95,21 +94,17 @@ export default function Race({ type }: any) {
   }, [active, inputValue]);
 
   useEffect(() => {
-    if (!hasFetchedCode.current) {
+    if (!hasFetchedCode.current && language) {
       handleGetCode();
       hasFetchedCode.current = true;
     }
-  }, []);
+  }, [language]);
 
   return (
-    <Container size="xl">
-      <Flex justify="flex-start" align="center" pt="2.5rem" pb="1rem">
-        {/* <Text color="text-primary.0" fw={500} fz={20}>
-          {raceCompleted
-            ? "¡Carrera terminada!"
-            : "Escribe el siguiente código"}
-        </Text> */}
-      </Flex>
+    <div className="container mx-auto px-5">
+      <p className="font-semibold text-secondary py-8 text-lg">
+        {raceCompleted ? "¡Carrera terminada!" : "Escribe el siguiente código"}
+      </p>
       {handleRenderComponentBody({
         cpm,
         code,
@@ -122,6 +117,6 @@ export default function Race({ type }: any) {
         setInputValue,
         raceCompleted,
       })}
-    </Container>
+    </div>
   );
 }

@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Container, Text, Group, Avatar, Flex, Card } from "@mantine/core";
+import {
+  Card,
+  Image,
+  Avatar,
+  Divider,
+  CardBody,
+  CardHeader,
+} from "@nextui-org/react";
 import { getUserByIdService } from "services";
 import { useRouter } from "next/router";
 import { Loader } from "components";
 import Link from "next/link";
-import Image from "next/image";
 import GitHubIcon from "assets/icons/GitHub.svg";
 
 type Props = {};
@@ -34,76 +40,68 @@ export default function Profile({}: Props) {
   }, [id]);
 
   return (
-    <Container size="xl">
+    <div className="container mx-auto px-5">
       {isLoading ? (
-        <Flex justify="center" align="center" pt="10rem">
+        <div className="flex justify-center">
           <Loader />
-        </Flex>
+        </div>
       ) : (
-        <Flex direction="column" gap="2.5rem">
-          <Group>
-            <Avatar radius="xl" src={user?.image} size="lg" />
-            <Text color="text-primary.0" fw={500} fz={20}>
-              {user?.name}
-            </Text>
-            <Link
-              href={`https://github.com/${user?.githubUsername}`}
-              target="_blank"
-            >
-              <Image
-                src={GitHubIcon.src}
-                width={20}
-                height={20}
-                alt="GitHub Icon"
-              />
-            </Link>
-          </Group>
-          <Card bg="background-secondary.0" radius="md">
-            <Flex direction="column" gap="sm">
-              <Group>
-                <Text fw={600} fz={18}>
-                  Carreras Completadas:
-                </Text>
-                <Text fw={500} fz={15}>
-                  {user?.racesCompleted}
-                </Text>
-              </Group>
-              <Group>
-                <Text fw={600} fz={18}>
-                  CPM Promedio:
-                </Text>
-                <Text fw={500} fz={15}>
-                  {user?.averageCpm}
-                </Text>
-              </Group>
-            </Flex>
+        <div className="py-8">
+          <div className="flex flex-row items-center gap-5">
+            <Avatar src={user?.image} size="md" />
+            <div className="flex flex-row items-center gap-1">
+              <p className="font-semibold text-secondary text-lg">
+                {user?.name}
+              </p>
+              <Link
+                href={`https://github.com/${user?.githubUsername}`}
+                target="_blank"
+              >
+                <Image
+                  src={GitHubIcon.src}
+                  width={20}
+                  height={20}
+                  alt="GitHub Icon"
+                />
+              </Link>
+            </div>
+          </div>
+          <Card className="mt-10 bg-backgroundSecondary" radius="md">
+            <CardHeader className="font-semibold text-lg">
+              Estadísticas
+            </CardHeader>
+            <Divider />
+            <CardBody>
+              <div className="flex flex-row items-center gap-2">
+                <p className="font-semibold text-sm">Carreras Completadas:</p>
+                <p>{user?.races}</p>
+              </div>
+              <div className="flex flex-row items-center gap-2">
+                <p className="font-semibold text-sm"> CPM Promedio:</p>
+                <p>{user?.averageCpm}</p>
+              </div>
+            </CardBody>
           </Card>
-          <Card bg="background-secondary.0" radius="md" opacity="0.5">
-            <Flex justify="flex-start">
-              <Text fw={600} fz={20}>
-                Amigos
-              </Text>
-            </Flex>
-            <Flex justify="center">
-              <Text fw={600} fz={25} py={50}>
-                Próximamente...
-              </Text>
-            </Flex>
+          <Card className="mt-10 bg-backgroundSecondary" radius="md">
+            <CardHeader className="font-semibold text-lg">Amigos</CardHeader>
+            <Divider />
+            <CardBody>
+              <p className="font-semibold text-lg text-center py-5">
+                PRÓXIMAMENTE
+              </p>
+            </CardBody>
           </Card>
-          <Card bg="background-secondary.0" radius="md" opacity="0.5">
-            <Flex justify="flex-start">
-              <Text fw={600} fz={20}>
-                Logros
-              </Text>
-            </Flex>
-            <Flex justify="center">
-              <Text fw={600} fz={25} py={50}>
-                Próximamente...
-              </Text>
-            </Flex>
+          <Card className="mt-10 bg-backgroundSecondary" radius="md">
+            <CardHeader className="font-semibold text-lg">Logros</CardHeader>
+            <Divider />
+            <CardBody>
+              <p className="font-semibold text-lg text-center py-5">
+                PRÓXIMAMENTE
+              </p>
+            </CardBody>
           </Card>
-        </Flex>
+        </div>
       )}
-    </Container>
+    </div>
   );
 }
