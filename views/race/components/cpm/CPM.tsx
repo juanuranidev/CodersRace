@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Card, Flex, Text, Tooltip } from "@mantine/core";
+import { Card, Tooltip } from "@nextui-org/react";
 import InfoIcon from "assets/icons/Info.svg";
 import Image from "next/image";
 
@@ -23,30 +23,22 @@ export default function CPM({ milliseconds, inputValue, cpm, setCpm }: any) {
 
   return (
     <Card
-      w="100%"
-      h="100%"
-      px="lg"
-      radius="lg"
-      bg="background-secondary.0"
+      className="bg-backgroundSecondary p-4 h-full"
       style={{
-        overflow: "visible",
         zIndex: "auto",
+        overflow: "visible",
       }}
     >
-      <Flex align="center" gap="xs">
-        <Text color="text-primary.0" weight={500} fz={20}>
-          CPM
-        </Text>
+      <div className="flex flex-row gap-2 items-center">
+        <p className="font-semibold text-secondary text-lg">CPM</p>
         <Tooltip
-          withArrow
-          label="Caracteres por minuto (CPM) se calculan de la siguiente forma: palabras correctas / tiempo en minutos"
+          color="secondary"
+          content="Caracteres por minuto (CPM) se calculan de la siguiente forma: palabras correctas / tiempo en minutos"
         >
           <Image src={InfoIcon.src} width={25} height={25} alt="info icon" />
         </Tooltip>
-      </Flex>
-      <Text color="text-primary.0" weight={500} fz={20}>
-        {cpm}
-      </Text>
+      </div>
+      <p className="font-semibold text-secondary text-lg">{cpm}</p>
     </Card>
   );
 }

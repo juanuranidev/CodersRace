@@ -1,7 +1,7 @@
 import React from "react";
+import { Card, Textarea } from "@nextui-org/react";
 import { useClickOutside } from "@mantine/hooks";
 import { renderCodeCharacter } from "lib";
-import { Card, Textarea, FocusTrap, createStyles } from "@mantine/core";
 
 type Props = {
   code: string;
@@ -11,17 +11,6 @@ type Props = {
   setInputValue: any;
 };
 
-const useStyles = createStyles({
-  textarea: {
-    top: "0%",
-    left: "0%",
-    width: "100%",
-    height: "100%",
-    background: "none",
-    position: "absolute",
-  },
-});
-
 export default function RaceCard({
   code,
   active,
@@ -29,7 +18,6 @@ export default function RaceCard({
   inputValue,
   setInputValue,
 }: Props) {
-  const { classes } = useStyles();
   const ref = useClickOutside(() => handlers.close());
 
   const handleChangeInput = (e: any) => {
@@ -40,29 +28,27 @@ export default function RaceCard({
       setInputValue(inputValue + e.target.value);
     }
   };
-
   return (
     <Card
-      px="lg"
       ref={ref}
       radius="lg"
-      bg="background-secondary.0"
       onClick={() => handlers.open()}
+      className="bg-backgroundSecondary p-5"
       style={{ border: active ? "2px solid #fc5d1b" : "2px solid #ff0000" }}
     >
       <pre style={{ fontFamily: "Poppins, sans-serif" }}>
         {renderCodeCharacter(code, inputValue)}
       </pre>
-      <FocusTrap active={active}>
-        <Textarea
-          value=""
-          id="test"
-          minRows={12}
-          variant="unstyled"
-          className={classes.textarea}
-          onChange={(e) => handleChangeInput(e)}
-        />
-      </FocusTrap>
+      <Textarea
+        autoFocus
+        onClick={() => handlers.open()}
+        minRows={12}
+        value=""
+        variant="bordered"
+        className="absolute top-0 left-0 w-full h-full border-none focus:outline-0 border-none "
+        style={{ border: "0px", outline: "0px" }}
+        onChange={(e) => handleChangeInput(e)}
+      />
     </Card>
   );
 }
