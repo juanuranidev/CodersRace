@@ -32,7 +32,7 @@ export default function Landing() {
           <Code key={code.text} code={code} />
         ))}
       </div>
-      <div className="container max-w-7xl mx-auto fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
+      <div className="container mx-auto px-5 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
         <div className="flex justify-between items-center">
           <div className="flex flex-col items-start ">
             <h1 className="text-4xl text-primary mb-2 font-bold text-6xl">

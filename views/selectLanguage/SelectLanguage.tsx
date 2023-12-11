@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Container, Text, SimpleGrid, Flex } from "@mantine/core";
 import { getLanguagesService } from "services";
 import { LanguageCard } from "./components";
 import { Loader } from "components";
@@ -24,23 +23,14 @@ export default function SelectLanguage({ baseUrl }: any) {
     handleGetLanguages();
   }, []);
 
-  if (isLoading)
-    return (
-      <Flex align="center" justify="center" mih="90%">
-        <Loader />
-      </Flex>
-    );
+  if (isLoading) return <Loader />;
+
   return (
-    <Container size="xl">
-      <Text pb="2.5rem" color="text-primary.0" fw={500} fz={20}>
+    <div className="container mx-auto px-5">
+      <p className="font-semibold text-secondary py-8 text-lg">
         Elige tu lenguage
-      </Text>
-      <SimpleGrid
-        cols={1}
-        spacing="xl"
-        verticalSpacing="xl"
-        breakpoints={[{ minWidth: "md", cols: 2 }]}
-      >
+      </p>
+      <div className="grid grid-cols-2 gap-4">
         {languages.map((language: any) => (
           <LanguageCard
             baseUrl={baseUrl}
@@ -48,7 +38,7 @@ export default function SelectLanguage({ baseUrl }: any) {
             language={language}
           />
         ))}
-      </SimpleGrid>
-    </Container>
+      </div>
+    </div>
   );
 }
