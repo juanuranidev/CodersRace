@@ -7,7 +7,7 @@ export const gamemodes = [
     name: "Practicar",
     url: "practice",
     isDisabled: false,
-    tooltipText:
+    description:
       "Practica carreras ilimitadamente, no es necesario que inicies sesión.",
     icon: PracticeIcon.src,
     requiresUser: false,
@@ -16,7 +16,7 @@ export const gamemodes = [
     name: "Correr",
     url: "race",
     isDisabled: false,
-    tooltipText:
+    description:
       "Registra todas tus carreras, necesitas iniciar sesión para jugar.",
     icon: RunIcon.src,
     requiresUser: true,
@@ -25,7 +25,7 @@ export const gamemodes = [
     name: "Campeonato",
     url: "championship",
     isDisabled: true,
-    tooltipText: "Este modo de juego estará disponible próximamente.",
+    description: "Este modo de juego estará disponible próximamente.",
     icon: WorldIcon.src,
     requiresUser: false,
   },

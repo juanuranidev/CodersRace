@@ -13,10 +13,10 @@ import { getLeaderboardService } from "services";
 import { Loader } from "components";
 
 export default function Ranking({}) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [leaderboard, setLeaderboard] = useState([]);
 
-  const loadingState = isLoading || !leaderboard.length ? "loading" : "idle";
+  const loadingState = isLoading ? "loading" : "idle";
 
   const handleGetLeaderboard = async () => {
     setIsLoading(true);
@@ -42,12 +42,14 @@ export default function Ranking({}) {
       <Card className="bg-backgroundSecondary" radius="md">
         <Table aria-label="Ranking de usuarios" removeWrapper isCompact>
           <TableHeader>
-            <TableColumn>Posición</TableColumn>
-            <TableColumn>Usuario</TableColumn>
-            <TableColumn style={{ textAlign: "center" }}>
+            <TableColumn className="text-secondary p-6">Posición</TableColumn>
+            <TableColumn className="text-secondary p-6">Usuario</TableColumn>
+            <TableColumn className="text-secondary p-6 text-center">
               CPM Promedio
             </TableColumn>
-            <TableColumn style={{ textAlign: "center" }}>Carreras</TableColumn>
+            <TableColumn className="text-secondary p-6 text-center">
+              Carreras
+            </TableColumn>
           </TableHeader>
           <TableBody
             items={leaderboard ?? []}

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getLanguagesService } from "services";
-import { LanguageCard } from "./components";
 import { Loader } from "components";
+import LanguageCard from "views/selectLanguage/components/LanguageCard";
 
-export default function SelectLanguage({ baseUrl }: any) {
+type Props = {
+  baseUrl: string;
+};
+
+export default function SelectLanguage({ baseUrl }: Props) {
   const [languages, setLanguages] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 

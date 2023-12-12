@@ -1,10 +1,8 @@
 import React from "react";
 import { gamemodes } from "./Utils";
-import { GamemodeCard } from "./components";
+import GamemodeCard from "views/play/components/GamemodeCard";
 
-type Props = {};
-
-export default function Play({}: Props) {
+export default function Play() {
   return (
     <div className="container mx-auto px-5 pb-10">
       <p className="font-semibold text-secondary py-8 text-lg">

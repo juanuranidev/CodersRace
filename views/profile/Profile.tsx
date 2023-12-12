@@ -13,9 +13,7 @@ import { Loader } from "components";
 import Link from "next/link";
 import GitHubIcon from "assets/icons/GitHub.svg";
 
-type Props = {};
-
-export default function Profile({}: Props) {
+export default function Profile({}) {
   const router = useRouter();
   const { id } = router.query;
 
