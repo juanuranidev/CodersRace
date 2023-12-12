@@ -1,5 +1,4 @@
 import React from "react";
-import { Kbd } from "@mantine/core";
 import { Card } from "@nextui-org/react";
 
 type Props = {
@@ -41,25 +40,25 @@ export default function RenderCode({ code, input }: Props) {
               backgroundColor: "#fc5d1b",
             }}
           >
-            <Kbd size="sm" p="0">
-              {"↵ \n"}
-            </Kbd>
+            {/* <Kbd size="sm" p="0"> */}
+            {"↵ \n"}
+            {/* </Kbd> */}
           </span>
         );
       } else if (isSpace && !hasCompleted) {
         return (
           <span key={index} style={{ marginLeft: "0.5rem", opacity: "0.5" }}>
-            <Kbd size="sm" p="0">
-              {"↵ \n"}
-            </Kbd>
+            {/* <Kbd size="sm" p="0"> */}
+            {"↵ \n"}
+            {/* </Kbd> */}
           </span>
         );
       } else if (isSpace && hasCompleted) {
         return (
           <span key={index} style={{ marginLeft: "0.5rem" }}>
-            <Kbd size="sm" p="0">
-              {"↵ \n"}
-            </Kbd>
+            {/* <Kbd size="sm" p="0"> */}
+            {"↵ \n"}
+            {/* </Kbd> */}
           </span>
         );
       } else if (hasCompleted) {

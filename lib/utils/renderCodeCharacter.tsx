@@ -1,5 +1,3 @@
-import { Kbd } from "@mantine/core";
-
 const renderCodeCharacter = (code: string, input: string): any => {
   return code.split("").map((character: string, index: number) => {
     const isSpace = character === "\n";
@@ -33,39 +31,17 @@ const renderCodeCharacter = (code: string, input: string): any => {
             // backgroundColor: "#fc5d1b",
           }}
         >
-          <Kbd
-            p="0"
-            size="sm"
-            style={{ backgroundColor: "#ffffff", color: "#000000" }}
-          >
-            {"↵ \n"}
-          </Kbd>
+          {"↵ \n"}
         </span>
       );
     } else if (isSpace && !hasCompleted) {
       return (
         <span key={index} style={{ opacity: "0.5" }}>
-          <Kbd
-            size="sm"
-            p="0"
-            style={{ backgroundColor: "#ffffff", color: "#000000" }}
-          >
-            {"↵ \n"}
-          </Kbd>
+          {"↵ \n"}
         </span>
       );
     } else if (isSpace && hasCompleted) {
-      return (
-        <span key={index}>
-          <Kbd
-            size="sm"
-            p="0"
-            style={{ backgroundColor: "#ffffff", color: "#000000" }}
-          >
-            {"↵ \n"}
-          </Kbd>
-        </span>
-      );
+      return <span key={index}>{"↵ \n"}</span>;
     } else if (hasCompleted) {
       return (
         <span
