@@ -9,6 +9,7 @@ import {
 } from "@nextui-org/react";
 import { getUserByIdService } from "services";
 import { useRouter } from "next/router";
+import { UserType } from "lib/types";
 import { Loader } from "components";
 import Link from "next/link";
 import GitHubIcon from "assets/icons/GitHub.svg";
@@ -17,7 +18,7 @@ export default function Profile({}) {
   const router = useRouter();
   const { id } = router.query;
 
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<UserType | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const handleGetUserById = async () => {

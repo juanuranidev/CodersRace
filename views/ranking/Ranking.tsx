@@ -10,11 +10,15 @@ import {
   TableColumn,
 } from "@nextui-org/react";
 import { getLeaderboardService } from "services";
+import { useRouter } from "next/router";
+import { UserType } from "lib/types";
 import { Loader } from "components";
 
 export default function Ranking({}) {
+  const router = useRouter();
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [leaderboard, setLeaderboard] = useState([]);
+  const [leaderboard, setLeaderboard] = useState<UserType[]>([]);
 
   const loadingState = isLoading ? "loading" : "idle";
 
@@ -57,12 +61,17 @@ export default function Ranking({}) {
             loadingState={loadingState}
             emptyContent={"No hay usuarios para mostrar."}
           >
-            {(user: any) => (
-              <TableRow key={user?.id} onClick={() => console.log(user)}>
+            {(user: UserType) => (
+              <TableRow key={user?.id}>
                 <TableCell>{user.id}</TableCell>
                 <TableCell>
                   <div className="flex flex-row gap-4 items-center">
-                    <Avatar src={user.image} alt="user image" size="md" />
+                    <Avatar
+                      size="md"
+                      alt="user image"
+                      src={user.image}
+                      onClick={() => router.replace(`/profile/${user?.id}`)}
+                    />
                     <p className="font-semibold text-secondary py-4 text-md">
                       {user?.name}
                     </p>

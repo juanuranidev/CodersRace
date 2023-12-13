@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { landingCodes } from "lib";
+import { landingCodes } from "lib/utils";
 import { RenderCode } from "components";
 import { Button } from "@nextui-org/react";
-import { Code } from "./components";
+import Code from "views/landing/components/Code";
 import Link from "next/link";
 
 export default function Landing() {
