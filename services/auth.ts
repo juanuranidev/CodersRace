@@ -1,6 +1,7 @@
-import { request } from "lib";
+import { request } from "lib/utils";
+import { UserType } from "lib/types";
 
-export const loginService = async (data: any) => {
+export const loginService = async (data: UserType) => {
   try {
     const response = await request({
       method: "POST",

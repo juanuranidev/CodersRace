@@ -1,4 +1,4 @@
-import { request } from "lib";
+import { request } from "lib/utils";
 
 export const getRandomCodeByLanguageService = async (
   language: string | undefined | string[]

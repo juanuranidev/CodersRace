@@ -1,4 +1,4 @@
-import { request } from "lib";
+import { request } from "lib/utils";
 
 export const getLeaderboardService = async () => {
   try {
@@ -6,7 +6,7 @@ export const getLeaderboardService = async () => {
       method: "GET",
       url: "api/user/leaderboard",
     });
-    console.log({ response });
+
     return response;
   } catch (error: any) {
     console.log({ error });
@@ -22,6 +22,7 @@ export const getUserByIdService = async (
       method: "GET",
       url: `api/user/get/${userId}`,
     });
+
     return response;
   } catch (error: any) {
     throw new Error(error);
