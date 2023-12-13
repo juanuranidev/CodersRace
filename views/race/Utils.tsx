@@ -1,5 +1,5 @@
 import React from "react";
-import { formatMillisecondsToSeconds, renderLanguageIcon } from "lib";
+import { formatMillisecondsToSeconds, renderLanguageIcon } from "lib/utils";
 import { CPM, ProgressCard, RaceCard, TimeCard } from "./components";
 import { Loader } from "components";
 import Link from "next/link";

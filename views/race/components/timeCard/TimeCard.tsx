@@ -1,5 +1,5 @@
 import React from "react";
-import { formatMillisecondsToSeconds } from "lib";
+import { formatMillisecondsToSeconds } from "lib/utils";
 import { Card } from "@nextui-org/react";
 
 type Props = {

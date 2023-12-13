@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { successToast, useMillisecondCounter } from "lib";
+import { successToast } from "lib/utils";
 import { getRandomCodeByLanguageService } from "services/codes";
 import { handleRenderComponentBody } from "./Utils";
 import { postRaceService } from "services";
 import { useDisclosure } from "@mantine/hooks";
-import { useUserData } from "lib";
+import { useUserData, useMillisecondCounter } from "lib/hooks";
 import { useRouter } from "next/router";
 
 type Props = {};

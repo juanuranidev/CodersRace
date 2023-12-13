@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Textarea } from "@nextui-org/react";
 import { useClickOutside } from "@mantine/hooks";
-import { renderCodeCharacter } from "lib";
+import { renderCodeCharacter } from "lib/utils";
 
 type Props = {
   code: string;
