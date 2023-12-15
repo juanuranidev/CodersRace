@@ -1,10 +1,7 @@
 import React from "react";
 import { PublicLayout } from "components";
 import { SelectLanguage } from "views";
-
-type Props = {};
-
-export default function index({}: Props) {
+export default function index() {
   return (
     <PublicLayout>
       <SelectLanguage baseUrl="/race" />

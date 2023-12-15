@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
-import { GITHUB, JWT } from "lib";
+import { GITHUB, JWT } from "lib/env";
 import { loginService } from "services";
 
 export const authOptions = {

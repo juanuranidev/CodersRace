@@ -1,10 +1,8 @@
 import React from "react";
-import { PublicLayout } from "components";
 import { Profile } from "views";
+import { PublicLayout } from "components";
 
-type Props = {};
-
-export default function index({}: Props) {
+export default function index() {
   return (
     <PublicLayout>
       <Profile />
