@@ -1,7 +1,14 @@
 import axios from "axios";
 import { BACKEND_BASE_URL } from "lib/env";
 
-const request = async ({ method, url, params, data }: any) => {
+type Props = {
+  method: "GET" | "POST" | "PUT" | "DELETE";
+  url: string;
+  params: any;
+  data: any;
+};
+
+const request = async ({ method, url, params, data }: Props) => {
   try {
     const response = await axios({
       url: url,

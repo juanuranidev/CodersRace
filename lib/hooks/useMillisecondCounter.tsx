@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 
 const useMillisecondCounter = () => {
@@ -11,17 +10,16 @@ const useMillisecondCounter = () => {
     if (isRunning) {
       interval = setInterval(() => {
         setMilliseconds((prevMilliseconds) => prevMilliseconds + 10);
-      }, 10); // Actualiza el contador cada milisegundo (1 milisegundo = 1)
+      }, 10);
     } else if (interval) {
       clearInterval(interval);
-      interval = null; // Limpia la variable interval cuando se detiene el contador
+      interval = null;
     }
 
-    // Limpia el intervalo cuando el componente se desmonta
     return () => {
       if (interval) {
         clearInterval(interval);
-        interval = null; // Limpia la variable interval cuando el componente se desmonta
+        interval = null;
       }
     };
   }, [isRunning]);
