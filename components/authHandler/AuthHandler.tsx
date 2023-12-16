@@ -2,9 +2,7 @@ import React from "react";
 import { ScreenLoader } from "components";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { AUTH } from "lib";
-
-type Props = {};
+import { AUTH } from "lib/constants";
 
 function AuthHandler({ auth, children }: any) {
   const { status } = useSession();

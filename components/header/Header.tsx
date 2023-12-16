@@ -9,18 +9,16 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react";
 import { signIn, signOut } from "next-auth/react";
-import { useUserData } from "lib";
+import { useUserData } from "lib/hooks";
 import { useRouter } from "next/router";
 import GitHubButton from "../GitHubButton/GitHubButton";
 import ArrowDown from "assets/icons/ArrowDown.svg";
 import Image from "next/image";
 
-type Props = {};
-
-export default function Header({}: Props) {
+export default function Header({}) {
   const router = useRouter();
   const userData = useUserData();
-  // status
+
   return (
     <div className="container mx-auto p-5 h-[5rem]">
       <div
