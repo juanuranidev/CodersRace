@@ -1,5 +1,4 @@
 import { request } from "lib/utils";
-import { fromGetLanguagesApi } from "adapters";
 
 export const getLanguagesService = async () => {
   try {
@@ -8,7 +7,7 @@ export const getLanguagesService = async () => {
       url: "api/language",
     });
 
-    return fromGetLanguagesApi(response.data);
+    return response.data;
   } catch (error: any) {
     throw new Error(error);
   }

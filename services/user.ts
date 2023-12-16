@@ -9,7 +9,6 @@ export const getLeaderboardService = async () => {
 
     return response;
   } catch (error: any) {
-    console.log({ error });
     throw new Error(error);
   }
 };
