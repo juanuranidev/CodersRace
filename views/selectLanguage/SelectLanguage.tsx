@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getLanguagesService } from "services";
+import { LanguageType } from "lib/types";
 import { Loader } from "components";
 import LanguageCard from "views/selectLanguage/components/LanguageCard";
 
@@ -8,7 +9,7 @@ type Props = {
 };
 
 export default function SelectLanguage({ baseUrl }: Props) {
-  const [languages, setLanguages] = useState<any[]>([]);
+  const [languages, setLanguages] = useState<LanguageType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const handleGetLanguages = async () => {
@@ -35,7 +36,7 @@ export default function SelectLanguage({ baseUrl }: Props) {
         Elige tu lenguage
       </p>
       <div className="grid grid-cols-2 gap-4">
-        {languages.map((language: any) => (
+        {languages.map((language: LanguageType) => (
           <LanguageCard
             baseUrl={baseUrl}
             key={language?.id}

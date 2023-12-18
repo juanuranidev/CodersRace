@@ -2,7 +2,6 @@ import React from "react";
 import { formatMillisecondsToSeconds, renderLanguageIcon } from "lib/utils";
 import { CPM, ProgressCard, RaceCard, TimeCard } from "./components";
 import { Loader } from "components";
-import Link from "next/link";
 import { Card } from "@nextui-org/react";
 
 export const handleRenderComponentBody = ({
