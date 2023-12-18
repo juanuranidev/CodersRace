@@ -9,7 +9,7 @@ export const UserDataProvider = ({ children }) => {
 
   useEffect(() => {
     if (data) {
-      setUserData(data.user);
+      setUserData(data?.user);
     }
   }, [data]);
 
