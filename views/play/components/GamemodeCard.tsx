@@ -1,12 +1,13 @@
 import React from "react";
 import { Card, CardFooter, Image, Divider } from "@nextui-org/react";
 import { cardAnimations } from "views/play/Utils";
-import { useUserData } from "lib";
+import { useUserData } from "lib/hooks";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import GamemodeCar1 from "assets/images/GamemodeCar1.jpg";
 import GamemodeCar2 from "assets/images/GamemodeCar2.jpg";
 import GamemodeCar3 from "assets/images/GamemodeCar3.jpg";
+import { UserType } from "lib/types";
 
 type Props = {
   gamemode: any;
@@ -17,7 +18,10 @@ export default function GamemodeCard({ gamemode, index }: Props) {
   const userData = useUserData();
   const gamemodeImages = [GamemodeCar1.src, GamemodeCar2.src, GamemodeCar3.src];
 
-  const handleIsGamemodeDisabled = (gamemode: any, userData: any): boolean => {
+  const handleIsGamemodeDisabled = (
+    gamemode: any,
+    userData: UserType
+  ): boolean => {
     if (gamemode?.isDisabled) return true;
     if (gamemode?.requiresUser && !userData) return true;
 
