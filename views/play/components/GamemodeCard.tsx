@@ -1,5 +1,15 @@
 import React from "react";
-import { Card, CardFooter, Image, Divider } from "@nextui-org/react";
+import {
+  Card,
+  CardFooter,
+  Image,
+  Divider,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownSection,
+  DropdownTrigger,
+} from "@nextui-org/react";
 import { cardAnimations } from "views/play/Utils";
 import { useUserData } from "lib/hooks";
 import { motion } from "framer-motion";
@@ -40,27 +50,44 @@ export default function GamemodeCard({ gamemode, index }: Props) {
       animate={!handleIsGamemodeDisabled(gamemode, userData) && "cardHovered"}
     >
       {handleIsGamemodeDisabled(gamemode, userData) ? (
-        <Card
-          isFooterBlurred
-          className={`${cardStyles} bg-backgroundSecondary w-full`}
-          isPressable={!handleIsGamemodeDisabled(gamemode, userData)}
-        >
-          <Image
-            alt="car image"
-            className="image-gradient"
-            src={gamemodeImages[index]}
-          />
+        <Dropdown>
+          <DropdownTrigger>
+            <Card
+              isFooterBlurred
+              className={`${cardStyles} bg-backgroundSecondary w-full`}
+              isPressable={!handleIsGamemodeDisabled(gamemode, userData)}
+            >
+              <Image
+                alt="car image"
+                className="image-gradient"
+                src={gamemodeImages[index]}
+              />
 
-          <CardFooter className="flex items-center gap-5 p-5">
-            <p className="font-semibold text-3xl text-secondary">
-              {gamemode?.name}
-            </p>
-            <Divider orientation="vertical" className="h-8" />
-            <p className="font-semibold text-sm text-secondary opacity-80 text-left">
-              {gamemode?.description}
-            </p>
-          </CardFooter>
-        </Card>
+              <CardFooter className="flex items-center gap-5 p-5">
+                <p className="font-semibold text-3xl text-secondary">
+                  {gamemode?.name}
+                </p>
+                <Divider orientation="vertical" className="h-8" />
+                <p className="font-semibold text-sm text-secondary opacity-80 text-left">
+                  {gamemode?.description}
+                </p>
+              </CardFooter>
+            </Card>
+          </DropdownTrigger>
+          <DropdownMenu closeOnSelect={false}>
+            <DropdownSection aria-label="Profile & Actions" showDivider>
+              <DropdownItem
+              // className="opacity-100 cursor-default"
+              // isReadOnly
+              // key="github"
+              // color="secondary"
+              // style={{ cursor: "default" }}
+              >
+                <p>TESTING</p>
+              </DropdownItem>
+            </DropdownSection>
+          </DropdownMenu>
+        </Dropdown>
       ) : (
         <Link href={gamemode?.url} style={{ textDecoration: "none" }}>
           <Card
