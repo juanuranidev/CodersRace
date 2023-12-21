@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardFooter,
@@ -17,7 +17,11 @@ import Link from "next/link";
 import GamemodeCar1 from "assets/images/GamemodeCar1.jpg";
 import GamemodeCar2 from "assets/images/GamemodeCar2.jpg";
 import GamemodeCar3 from "assets/images/GamemodeCar3.jpg";
-import { UserType } from "lib/types";
+import { LanguageType, UserType } from "lib/types";
+import GamemodeCardDisabled from "./GamemodeCardDisabled";
+import { getLanguagesService } from "services";
+import { LanguageIcon } from "lib/utils";
+import { Loader } from "components";
 
 type Props = {
   gamemode: any;
@@ -27,6 +31,9 @@ type Props = {
 export default function GamemodeCard({ gamemode, index }: Props) {
   const userData = useUserData();
   const gamemodeImages = [GamemodeCar1.src, GamemodeCar2.src, GamemodeCar3.src];
+
+  const [languages, setLanguages] = useState<LanguageType[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const handleIsGamemodeDisabled = (
     gamemode: any,
@@ -38,11 +45,21 @@ export default function GamemodeCard({ gamemode, index }: Props) {
     return false;
   };
 
-  const cardStyles = `user-select-none ${
-    handleIsGamemodeDisabled(gamemode, userData)
-      ? "opacity-40 cursor-not-allowed"
-      : "opacity-100 cursor-pointer hover:bg-[#26252b]"
-  }`;
+  const handleGetLanguages = async () => {
+    try {
+      const response = await getLanguagesService();
+
+      setLanguages(response);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    handleGetLanguages();
+  }, []);
 
   return (
     <motion.div
@@ -50,19 +67,24 @@ export default function GamemodeCard({ gamemode, index }: Props) {
       animate={!handleIsGamemodeDisabled(gamemode, userData) && "cardHovered"}
     >
       {handleIsGamemodeDisabled(gamemode, userData) ? (
+        <GamemodeCardDisabled
+          index={index}
+          gamemode={gamemode}
+          gamemodeImages={gamemodeImages}
+        />
+      ) : (
         <Dropdown>
           <DropdownTrigger>
             <Card
               isFooterBlurred
-              className={`${cardStyles} bg-backgroundSecondary w-full`}
-              isPressable={!handleIsGamemodeDisabled(gamemode, userData)}
+              className="user-select-none bg-backgroundSecondary w-full opacity-100 cursor-pointer hover:bg-[#26252b]"
+              // isPressable={!handleIsGamemodeDisabled(gamemode, userData)}
             >
               <Image
                 alt="car image"
                 className="image-gradient"
                 src={gamemodeImages[index]}
               />
-
               <CardFooter className="flex items-center gap-5 p-5">
                 <p className="font-semibold text-3xl text-secondary">
                   {gamemode?.name}
@@ -75,43 +97,20 @@ export default function GamemodeCard({ gamemode, index }: Props) {
             </Card>
           </DropdownTrigger>
           <DropdownMenu closeOnSelect={false}>
-            <DropdownSection aria-label="Profile & Actions" showDivider>
-              <DropdownItem
-              // className="opacity-100 cursor-default"
-              // isReadOnly
-              // key="github"
-              // color="secondary"
-              // style={{ cursor: "default" }}
-              >
-                <p>TESTING</p>
-              </DropdownItem>
-            </DropdownSection>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              languages.map((language: LanguageType) => (
+                <DropdownItem key={language.id} className="my-1">
+                  <div className="flex items-center justify-start gap-4">
+                    <LanguageIcon language={language.name} width={30} />
+                    <p className="uppercase text-md">{language?.name}</p>
+                  </div>
+                </DropdownItem>
+              ))
+            )}
           </DropdownMenu>
         </Dropdown>
-      ) : (
-        <Link href={gamemode?.url} style={{ textDecoration: "none" }}>
-          <Card
-            isFooterBlurred
-            className={`${cardStyles} bg-backgroundSecondary w-full`}
-            isPressable={!handleIsGamemodeDisabled(gamemode, userData)}
-          >
-            <Image
-              isZoomed
-              alt="car image"
-              className="image-gradient w-fit h-50"
-              src={gamemodeImages[index]}
-            />
-            <CardFooter className="flex items-center gap-5 p-5">
-              <p className="font-semibold text-3xl text-secondary">
-                {gamemode?.name}
-              </p>
-              <Divider orientation="vertical" className="h-8" />
-              <p className="font-semibold text-sm text-secondary opacity-80 text-left">
-                {gamemode?.description}
-              </p>
-            </CardFooter>
-          </Card>
-        </Link>
       )}
     </motion.div>
   );
