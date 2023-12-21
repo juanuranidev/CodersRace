@@ -1,14 +1,21 @@
+import React from "react";
+import { Image } from "@nextui-org/react";
 import { LANGUAGES_NAMES } from "lib/constants";
 import JavaScript from "assets/icons/JavaScript.svg";
 import TypeScript from "assets/icons/TypeScript.svg";
 import Python from "assets/icons/Python.svg";
-import Image from "next/image";
 
-const renderLanguageIcon = (
-  language: string,
-  width: number,
-  height: number
-): any => {
+type Props = {
+  language: string;
+  width?: string | number;
+  height?: string | number;
+};
+
+export default function LanguageIcon({
+  language,
+  width = "100%",
+  height = "100%",
+}: Props) {
   let icon = "";
 
   if (language === LANGUAGES_NAMES.JAVASCRIPT) {
@@ -19,7 +26,7 @@ const renderLanguageIcon = (
     icon = Python.src;
   }
 
-  return <Image width={width} height={height} alt={icon} src={icon} />;
-};
-
-export default renderLanguageIcon;
+  return (
+    <Image radius="none" width={width} height={height} alt={icon} src={icon} />
+  );
+}
