@@ -4,8 +4,8 @@ import { SessionProvider } from "next-auth/react";
 import { NextUIProvider } from "@nextui-org/react";
 import { AuthHandler } from "components";
 import { Toaster } from "react-hot-toast";
-import "styles/css/global.css";
-import "styles/css/components.css";
+import "styles/global.css";
+import "styles/components.css";
 
 export default function App({
   Component,
