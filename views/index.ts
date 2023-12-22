@@ -8,4 +8,3 @@ export { default as ProgressCard } from "./race/components/progressCard/Progress
 export { default as RaceCard } from "./race/components/raceCard/RaceCard";
 export { default as TimeCard } from "./race/components/timeCard/TimeCard";
 export { default as Ranking } from "./ranking/Ranking";
-export { default as SelectLanguage } from "./selectLanguage/SelectLanguage";

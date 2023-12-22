@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { landingCodes } from "lib/utils";
 import { RenderCode } from "components";
 import { Button } from "@nextui-org/react";
-import Code from "views/landing/components/Code";
 import Link from "next/link";
+import BackgroundCode from "views/landing/components/BackgroundCode";
 
 export default function Landing() {
   const landingCode = `import React from 'react';\nimport { Code } from '@mantine/core';\n\nfunction Demo() {\n    return <Code>React.createElement()</Code>;\n},`;
@@ -29,7 +29,7 @@ export default function Landing() {
     <div>
       <div className="overflow-hidden" style={{ height: "85vh" }}>
         {landingCodes.map((code: any) => (
-          <Code key={code.text} code={code} />
+          <BackgroundCode key={code.text} code={code} />
         ))}
       </div>
       <div className="container mx-auto px-5 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
@@ -42,7 +42,7 @@ export default function Landing() {
               ¿Qué tan rápido puedes codear?
             </p>
             <Link href="/play">
-              <Button color="primary" className="font-semibold">
+              <Button color="primary" className="font-semibold" radius="sm">
                 Comenzar
               </Button>
             </Link>

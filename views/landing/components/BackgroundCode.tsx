@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useHover } from "@mantine/hooks";
 
-export default function Code({ code }: any) {
+export default function BackgroundCode({ code }: any) {
   const { hovered, ref } = useHover();
 
   const textAnimations = {
@@ -12,13 +12,11 @@ export default function Code({ code }: any) {
 
   return (
     <motion.div
+      className="flex"
       key={code?.text}
       variants={textAnimations}
+      style={{ justifyContent: code?.justify }}
       animate={hovered ? "codeHovered" : "codeNoHovered"}
-      style={{
-        display: "flex",
-        justifyContent: code?.justify,
-      }}
     >
       <p
         ref={ref}

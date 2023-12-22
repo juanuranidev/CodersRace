@@ -24,7 +24,7 @@ export default function GamemodeCardDisabled({
         src={gamemodeImages[index]}
       />
       <CardFooter className="flex items-center gap-5 p-5">
-        <p className="font-semibold text-3xl text-secondary">
+        <p className="font-bold text-3xl opacity-80 text-secondary">
           {gamemode?.name}
         </p>
         <Divider orientation="vertical" className="h-8" />
