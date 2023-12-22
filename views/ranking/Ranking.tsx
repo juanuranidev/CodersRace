@@ -28,7 +28,6 @@ export default function Ranking({}) {
       const response = await getLeaderboardService();
       setLeaderboard(response.data);
     } catch (error) {
-      setIsLoading(false);
       console.log(error);
     }
     setIsLoading(false);
@@ -62,16 +61,19 @@ export default function Ranking({}) {
             emptyContent={"No hay usuarios para mostrar."}
           >
             {(user: UserType) => (
-              <TableRow key={user?.id}>
-                <TableCell>{user.id}</TableCell>
-                <TableCell>
+              <TableRow
+                key={user?.id}
+                className="cursor-pointer"
+                onClick={() => router.replace(`/profile/${user?.id}`)}
+              >
+                <TableCell className="pl-10">
+                  <p className="font-semibold text-secondary py-4 text-md">
+                    {user?.id ?? "---"}
+                  </p>
+                </TableCell>
+                <TableCell className="pb-2">
                   <div className="flex flex-row gap-4 items-center">
-                    <Avatar
-                      size="md"
-                      alt="user image"
-                      src={user.image}
-                      onClick={() => router.replace(`/profile/${user?.id}`)}
-                    />
+                    <Avatar size="md" alt="user image" src={user.image} />
                     <p className="font-semibold text-secondary py-4 text-md">
                       {user?.name}
                     </p>
@@ -79,12 +81,12 @@ export default function Ranking({}) {
                 </TableCell>
                 <TableCell style={{ textAlign: "center" }}>
                   <p className="font-semibold text-secondary py-4 text-md">
-                    {user?.averageCpm}
+                    {user?.averageCpm ?? "---"}
                   </p>
                 </TableCell>
                 <TableCell style={{ textAlign: "center" }}>
                   <p className="font-semibold text-secondary py-4 text-md">
-                    {user?.races}
+                    {user?.races ?? "---"}
                   </p>
                 </TableCell>
               </TableRow>
