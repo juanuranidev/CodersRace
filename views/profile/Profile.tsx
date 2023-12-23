@@ -65,37 +65,43 @@ export default function Profile({}) {
               </Link>
             </div>
           </div>
-          <Card className="mt-10 bg-backgroundSecondary" radius="md">
-            <CardHeader className="font-semibold text-lg">
+          <Card className="px-1 mt-10 bg-backgroundSecondary" radius="md">
+            <CardHeader className="font-semibold text-xl">
               Estadísticas
             </CardHeader>
             <Divider />
             <CardBody>
               <div className="flex flex-row items-center gap-2">
-                <p className="font-semibold text-sm">Carreras Completadas:</p>
-                <p>{user?.races}</p>
+                <p className="font-semibold text-md mb-2">
+                  Carreras Completadas:
+                </p>
+                <p>{user?.races ?? "---"}</p>
               </div>
               <div className="flex flex-row items-center gap-2">
-                <p className="font-semibold text-sm"> CPM Promedio:</p>
-                <p>{user?.averageCpm}</p>
+                <p className="font-semibold text-md "> CPM Promedio:</p>
+                <p>{user?.averageCpm ?? "---"}</p>
               </div>
             </CardBody>
           </Card>
-          <Card className="mt-10 bg-backgroundSecondary" radius="md">
-            <CardHeader className="font-semibold text-lg">Amigos</CardHeader>
+          <Card className="px-1 mt-10 bg-backgroundSecondary" radius="md">
+            <CardHeader className="font-semibold text-lg opacity-60">
+              Amigos
+            </CardHeader>
             <Divider />
             <CardBody>
-              <p className="font-semibold text-lg text-center py-5">
-                PRÓXIMAMENTE
+              <p className="font-semibold text-lg text-center py-5 opacity-60">
+                Próximamente
               </p>
             </CardBody>
           </Card>
-          <Card className="mt-10 bg-backgroundSecondary" radius="md">
-            <CardHeader className="font-semibold text-lg">Logros</CardHeader>
+          <Card className="px-1 mt-10 bg-backgroundSecondary" radius="md">
+            <CardHeader className="font-semibold text-lg opacity-60">
+              Logros
+            </CardHeader>
             <Divider />
             <CardBody>
-              <p className="font-semibold text-lg text-center py-5">
-                PRÓXIMAMENTE
+              <p className="font-semibold text-lg text-center py-5 opacity-60">
+                Próximamente
               </p>
             </CardBody>
           </Card>
