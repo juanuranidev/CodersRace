@@ -25,9 +25,8 @@ export const authOptions = {
           githubId: account.providerAccountId,
           githubUsername: profile.login,
         };
-
         const userInfo = await loginService(userData);
-        account.user = userInfo;
+        account.user = { ...userInfo.user, token: userInfo.token };
       } catch (error) {
         return "/";
       }

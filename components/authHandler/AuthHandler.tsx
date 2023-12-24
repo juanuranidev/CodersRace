@@ -12,9 +12,8 @@ function AuthHandler({ auth, children }: any) {
     return <ScreenLoader />;
   }
 
-  if (status !== AUTH.STATES.AUTHENTICATED) {
+  if (auth && status !== AUTH.STATES.AUTHENTICATED) {
     router.push(auth.unauthorized);
-    return null;
   }
 
   return children;

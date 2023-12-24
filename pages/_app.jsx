@@ -25,13 +25,9 @@ export default function App({
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <Toaster position="bottom-right" />
-          {Component.auth ? (
-            <AuthHandler auth={Component.auth}>
-              <Component {...pageProps} />
-            </AuthHandler>
-          ) : (
+          <AuthHandler auth={Component.auth}>
             <Component {...pageProps} />
-          )}
+          </AuthHandler>
         </UserDataProvider>
       </SessionProvider>
     </NextUIProvider>
