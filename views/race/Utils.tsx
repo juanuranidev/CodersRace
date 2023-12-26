@@ -1,5 +1,5 @@
 import React from "react";
-import { formatMillisecondsToSeconds, renderLanguageIcon } from "lib/utils";
+import { formatMillisecondsToSeconds, LanguageIcon } from "lib/utils";
 import { CPM, ProgressCard, RaceCard, TimeCard } from "./components";
 import { Loader } from "components";
 import { Card } from "@nextui-org/react";
@@ -33,7 +33,11 @@ export const handleRenderComponentBody = ({
           <p className="font-semibold text-secondary text-md">Lenguage:</p>
           <p>
             {raceCompleted?.language?.name}{" "}
-            {renderLanguageIcon(raceCompleted?.language?.name, 20, 20)}
+            <LanguageIcon
+              language={raceCompleted?.language?.name}
+              height={20}
+              width={20}
+            />
           </p>
         </div>
         <div className="flex flex-row items-center gap-2">
