@@ -2,9 +2,9 @@ import React from "react";
 import { gamemodes } from "./Utils";
 import { useUserData } from "lib/hooks";
 import GamemodeCard from "views/play/components/GamemodeCard";
-import GamemodeCar1 from "assets/images/GamemodeCar1.jpg";
-import GamemodeCar2 from "assets/images/GamemodeCar2.jpg";
-import GamemodeCar3 from "assets/images/GamemodeCar3.jpg";
+import GamemodeCar1 from "assets/images/GamemodeCar1.png";
+import GamemodeCar2 from "assets/images/GamemodeCar2.png";
+import GamemodeCar3 from "assets/images/GamemodeCar3.png";
 import GamemodeCardDisabled from "./components/GamemodeCardDisabled";
 
 export default function Play() {
