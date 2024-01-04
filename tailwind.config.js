@@ -1,44 +1,37 @@
-// tailwind.config.js
-const { nextui } = require("@nextui-org/react");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
-    // ...
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
-    // "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    // "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    // "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./views/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
+  prefix: "",
   theme: {
-    extend: {},
-  },
-  darkMode: "class",
-  plugins: [
-    nextui({
-      themes: {
-        light: {
-          layout: {},
-          colors: {},
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-        dark: {
-          layout: {},
-          colors: {
-            backgroundPrimary: "#15141a",
-            primary: {
-              DEFAULT: "#e35418",
-              foreground: "#f9f9f9",
-            },
-            secondary: {
-              DEFAULT: "#f9f9f9",
-              foreground: "#15141a",
-            },
-            backgroundSecondary: "#2a2930",
-          },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
-    }),
-  ],
-};
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+}
